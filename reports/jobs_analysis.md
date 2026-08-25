@@ -1,11 +1,14 @@
 # Python数据工程师职位分析报告 - 德国市场
 
+> 2026-08-26 基于 arbeitnow 最新采集数据（89 条职位）刷新概览与推荐清单。
+
 ## 📊 职位概览
 
-**总职位数**: 52个数据工程师职位
-**Python相关职位**: 10个（19.2%）
-**远程工作机会**: 3个
-**主要城市**: 柏林、慕尼黑、斯图加特、杜塞尔多夫
+**总职位数**: 89个数据工程相关职位（2026-08 采集）
+**柏林岗位**: 40个（45%）
+**远程岗位**: 7个（含全德远程与混合远程）
+**主要城市**: 柏林、慕尼黑、汉堡、科隆、斯图加特、杜塞尔多夫
+**级别分布**: Senior 31 / Mid 及以下 44 / Staff-Principal 8 / Lead 3 / 学生实习 3
 
 ## 🐍 Python相关职位详细列表
 
@@ -13,40 +16,41 @@
 
 | 职位名称 | 公司 | 地点 | 特点 |
 |---------|------|------|------|
-| **Python Developer - Data Engineering** | TalentNeuron | 德国（远程） | 纯Python开发，远程工作 |
-| **Python Data Engineer** | TalentNeuron | 远程 | 纯Python数据工程，完全远程 |
-| **Senior Software Engineer (Python/Data)** | Dlthub | 柏林 | Python后端+数据工程 |
+| **Senior Software Engineer - Python and Data Ecosystem** | ClickHouse | 德国（远程） | Python + 数据生态，完全远程 |
+| **Senior Data & Python Software Engineer** | Ceartas | 柏林 | Python后端+数据工程 |
+| **Mid Data Engineer** | Jimdo | 德国（远程） | Python数据工程，中级可投 |
 
 ### 2. **数据工程职位（Python为主要技术）**
 
 | 职位名称 | 公司 | 地点 | 技术栈 |
 |---------|------|------|--------|
-| **Data Engineer - Machine Learning** | RoboCo | 慕尼黑 | Python + ML |
-| **Scientific Data Engineer - EMEA** | Tetrascience | 杜塞尔多夫 | Python + 科学计算 |
-| **Senior Data Engineer (m/w/x)** | Cortea AI | 柏林 | Python + AI/搜索 |
-| **Data Engineer (f/m/d)** | FUTURAIL | 慕尼黑 | Python数据工程 |
+| **Data Scientist / Data Engineer** | Nucs AI | 柏林 | Python + ML |
+| **Materials Data Engineer (AI for Science, Knowledge Graphs)** | datin GmbH | 卡尔斯鲁厄 | Python + 知识图谱 |
+| **Data Engineer - AI Pipelines & DataOps** | Intersnack IT KG | 杜塞尔多夫 | Python + AI 管道 |
+| **AI-First Data Engineer (m/f/d)** | Sport Alliance GmbH | 德国（远程） | Python + AI 优先架构 |
 
 ### 3. **高级Python相关职位**
 
 | 职位名称 | 公司 | 地点 | 级别 |
 |---------|------|------|------|
-| **Senior Data Engineer (m/f/d)** | Careers homepage | 斯图加特 | 高级 |
-| **Senior Data Engineer (BI Architect)** | easybill GmbH | 远程 | 高级+架构师 |
+| **Staff Data Engineer (f/m/d) metrify** | Enpal | 柏林 | Staff级 |
+| **Principal Data Engineer (m/f/d)** | Thoughtworks | 科隆 | Principal级 |
+| **Staff Engineer - Data Platform (m\|w\|d)** | idealo internet GmbH | 柏林 | Staff级+平台方向 |
 
 ## 🎯 推荐优先级
 
 ### **第一梯队（强烈推荐）**
-1. **Python Developer - Data Engineering** (TalentNeuron) - 远程，纯Python
-2. **Python Data Engineer** (TalentNeuron) - 完全远程，Python专注
-3. **Senior Software Engineer (Python/Data)** (Dlthub) - 柏林，技术栈匹配
+1. **Senior Software Engineer - Python and Data Ecosystem** (ClickHouse) - 远程，纯Python+数据生态
+2. **Senior Data & Python Software Engineer** (Ceartas) - 柏林，技术栈高度匹配
+3. **Mid Data Engineer** (Jimdo) - 远程，中级经验即可
 
 ### **第二梯队（优质选择）**
-1. **Data Engineer - Machine Learning** (RoboCo) - 慕尼黑，AI方向
-2. **Scientific Data Engineer - EMEA** (Tetrascience) - 杜塞尔多夫，科学计算
+1. **Data Scientist / Data Engineer** (Nucs AI) - 柏林，AI方向
+2. **AI-First Data Engineer** (Sport Alliance GmbH) - 远程，AI优先架构
 
 ### **第三梯队（可考虑）**
-1. **Senior Data Engineer (BI Architect)** (easybill GmbH) - 远程，架构师级别
-2. **Senior Data Engineer (m/w/x)** (Cortea AI) - 柏林，AI搜索方向
+1. **Staff Data Engineer metrify** (Enpal) - 柏林，Staff级+能源科技
+2. **Principal Data Engineer** (Thoughtworks) - 科隆，咨询大厂
 
 ## 💡 技术栈分析
 
@@ -64,10 +68,12 @@
 
 ## 🌍 地理位置分布
 
-- **柏林**: 4个职位（技术最集中）
-- **慕尼黑**: 2个职位（AI/ML方向强）
-- **远程**: 3个职位（灵活性最高）
-- **其他城市**: 斯图加特、杜塞尔多夫各1个
+- **柏林**: 40个职位（占45%，技术最集中）
+- **慕尼黑**: 9个职位（AI/ML方向强）
+- **汉堡**: 5个职位（含 MOIA、Statista 等）
+- **科隆**: 5个职位（含 Thoughtworks）
+- **远程**: 7个职位（灵活性最高）
+- **其他城市**: 斯图加特4、杜塞尔多夫3、德累斯顿2，另覆盖海德堡、卡尔斯鲁厄等12个城市
 
 ## 🚀 申请建议
 
