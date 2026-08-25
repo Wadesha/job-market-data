@@ -18,36 +18,25 @@
   .wrap{max-width:980px;margin:0 auto;padding:0 20px}
 
   /* Hero */
-  .hero{background:linear-gradient(135deg,#0b3d91,#0969da);color:#fff;padding:48px 20px 40px;margin-bottom:32px}
+  .hero{background:linear-gradient(135deg,#0b3d91,#0969da);color:#fff;padding:40px 20px 34px;margin-bottom:28px}
   .hero .wrap{padding:0 20px}
-  .hero h1{font-size:30px;font-weight:700;margin-bottom:8px}
-  .hero p{font-size:16px;opacity:.92;max-width:680px}
-  .hero .meta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+  .hero h1{font-size:28px;font-weight:700;margin-bottom:8px}
+  .hero p{font-size:15px;opacity:.92;max-width:680px}
+  .hero .meta{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
   .badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);
          padding:4px 12px;border-radius:20px;font-size:13px}
-  .hero a.btn{display:inline-block;margin-top:18px;background:#fff;color:#0b3d91;
-         font-weight:600;padding:9px 18px;border-radius:8px;font-size:14px}
+  .hero a.btn{display:inline-block;margin-top:16px;background:#fff;color:#0b3d91;
+         font-weight:600;padding:8px 16px;border-radius:8px;font-size:14px}
 
-  h2{font-size:22px;margin:38px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-  h3{font-size:17px;margin:22px 0 8px}
+  h2{font-size:21px;margin:36px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+  h3{font-size:16px;margin:20px 0 8px}
   p{margin:10px 0;color:#333}
   .muted{color:var(--muted)}
 
-  /* Tree */
-  .tree{background:var(--code-bg);border:1px solid var(--border);border-radius:8px;
-        padding:18px 22px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;
-        font-size:13px;line-height:1.7;overflow-x:auto}
-  .tree .dir{color:var(--accent);font-weight:600}
-  .tree .cmt{color:var(--muted)}
-
-  /* Cards & stats */
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px}
-  .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px}
-  .card h4{font-size:15px;margin-bottom:6px;color:var(--accent)}
-  .card p{font-size:13px;color:var(--muted);margin:0}
+  /* Stats */
   .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:14px}
-  .stat{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center}
-  .stat .num{font-size:26px;font-weight:700;color:var(--accent)}
+  .stat{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+  .stat .num{font-size:24px;font-weight:700;color:var(--accent)}
   .stat .lbl{font-size:13px;color:var(--muted);margin-top:4px}
 
   /* Job browser */
@@ -56,7 +45,7 @@
     border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:14px;
     background:#fff;color:var(--fg)}
   .filters input[type=search]{flex:1;min-width:200px}
-  .filters label.chk{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--fg);cursor:pointer}
+  .filters label.chk{display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer}
   .count{font-size:13px;color:var(--muted);margin:8px 0}
   .count b{color:var(--accent)}
 
@@ -66,20 +55,28 @@
   .jobs-table th.sortable{cursor:pointer;user-select:none}
   .jobs-table th.sortable:hover{color:var(--accent)}
   .jobs-table tr:nth-child(even) td{background:#fbfcfd}
+  .jobs-table tr.job-row{cursor:pointer}
+  .jobs-table tr.job-row:hover td{background:var(--accent-bg)}
   .tag{display:inline-block;background:var(--accent-bg);color:var(--accent);border-radius:12px;
        padding:1px 9px;font-size:12px;white-space:nowrap}
   .tag.green{background:#dafbe1;color:var(--green)}
   .tag.gray{background:var(--code-bg);color:var(--muted)}
-  .jobs-table a{font-size:13px}
 
-  /* City chart */
-  .chart{margin-top:18px}
-  .bar-row{display:grid;grid-template-columns:130px 1fr 44px;gap:10px;align-items:center;
-           margin:7px 0;font-size:13px}
-  .bar-row .bar-bg{background:var(--code-bg);border-radius:5px;height:18px;overflow:hidden}
-  .bar-row .bar{height:100%;background:linear-gradient(90deg,#0969da,#39a0ff);border-radius:5px;
-                min-width:2px;transition:width .4s ease}
-  .bar-row .val{text-align:right;color:var(--muted)}
+  /* Detail view */
+  .back-link{display:inline-block;margin:18px 0 10px;font-size:14px}
+  .detail{display:none}
+  .detail h2{border-bottom:none;margin-bottom:4px}
+  .src-box{background:var(--code-bg);border:1px solid var(--border);border-radius:8px;
+           padding:12px 14px;margin:12px 0;font-size:14px;word-break:break-all}
+  .src-box .lbl{font-size:12px;color:var(--muted);margin-bottom:4px}
+  .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:16px 0}
+  .info-cell{border:1px solid var(--border);border-radius:10px;padding:12px 14px;background:#fff}
+  .info-cell .k{font-size:12px;color:var(--muted)}
+  .info-cell .val{font-size:15px;font-weight:600;margin-top:2px}
+  .detail section{margin:18px 0}
+  .detail .tags-line{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .salary-box{background:#dafbe1;border:1px solid #84cc16;border-radius:8px;padding:12px 14px;font-size:14px}
+  .salary-box b{color:var(--green)}
 
   table{width:100%;border-collapse:collapse;margin-top:14px;font-size:14px}
   th,td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top}
@@ -93,6 +90,11 @@
       font-size:13px;line-height:1.6;margin:12px 0}
   pre code{background:none;padding:0}
 
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px}
+  .card h4{font-size:15px;margin-bottom:6px;color:var(--accent)}
+  .card p{font-size:13px;color:var(--muted);margin:0}
+
   .note{background:#fff8c5;border:1px solid #d4a72c66;border-radius:8px;padding:14px 16px;margin:16px 0;font-size:14px}
   .note b{color:#7d4e00}
   footer{margin-top:46px;padding-top:20px;border-top:1px solid var(--border);
@@ -104,96 +106,98 @@
 <header class="hero">
   <div class="wrap">
     <h1>Job Market Data</h1>
-    <p>德国 Python / 数据工程师求职市场结构化数据集：职位列表、薪资水平、签证政策、市场需求与技能要求，含配套分析报告。数据时间范围 2025–2026。</p>
+    <p>德国 Python / 数据工程师求职市场结构化数据集：职位列表、薪资水平、签证政策、市场需求与技能要求，含配套分析报告。</p>
     <div class="meta">
-      <span class="badge">📊 49 条市场数据</span>
       <span class="badge">💼 89 个职位（2026-08 刷新）</span>
-      <span class="badge">📅 职位采集 2026-08-26</span>
+      <span class="badge">📊 49 条市场数据</span>
       <span class="badge">🌐 CSV / JSON / Excel</span>
     </div>
-    <a class="btn" href="https://github.com/Wadesha/job-market-data" target="_blank" rel="noopener">查看 GitHub 仓库 →</a>
+    <a class="btn" href="https://github.com/Wadesha/job-market-data" target="_blank" rel="noopener">GitHub 仓库 →</a>
   </div>
 </header>
 
 <div class="wrap">
 
-  <h2>📈 关键数字</h2>
-  <div class="stats">
-    <div class="stat"><div class="num">89</div><div class="lbl">在招数据工程职位（2026-08）</div></div>
-    <div class="stat"><div class="num">€60–90k</div><div class="lbl">数据工程师年薪区间</div></div>
-    <div class="stat"><div class="num">130,000</div><div class="lbl">德国 IT 人才缺口（2025–2026）</div></div>
-    <div class="stat"><div class="num">€45,934</div><div class="lbl">蓝卡紧缺职业（IT）年薪门槛</div></div>
+  <!-- ===== 列表视图 ===== -->
+  <div id="view-list">
+    <h2>💼 职位列表</h2>
+    <p class="muted">89 个德国数据工程相关职位，采集自 arbeitnow（2026-08-26）。点击任意一行查看职位详情。</p>
+
+    <div class="filters">
+      <input type="search" id="f-search" placeholder="搜索职位 / 公司 / 关键词，如 Python、Databricks、SumUp…">
+      <select id="f-city"><option value="">全部城市</option></select>
+      <select id="f-level">
+        <option value="">全部级别</option>
+        <option>Working Student</option>
+        <option>Junior</option>
+        <option>Mid/Junior</option>
+        <option>Mid</option>
+        <option>Senior</option>
+        <option>Lead</option>
+        <option>Staff/Principal</option>
+      </select>
+      <label class="chk"><input type="checkbox" id="f-remote"> 只看远程</label>
+    </div>
+    <div class="count" id="f-count"></div>
+
+    <table class="jobs-table">
+      <thead>
+        <tr>
+          <th class="sortable" data-key="t">职位名称 ⇅</th>
+          <th class="sortable" data-key="c">公司 ⇅</th>
+          <th class="sortable" data-key="l">地点 ⇅</th>
+          <th class="sortable" data-key="v">级别 ⇅</th>
+          <th>远程</th>
+        </tr>
+      </thead>
+      <tbody id="jobs-body"></tbody>
+    </table>
+
+    <h2>📈 市场关键数字</h2>
+    <div class="stats">
+      <div class="stat"><div class="num">89</div><div class="lbl">在招数据工程职位（2026-08）</div></div>
+      <div class="stat"><div class="num">€60–90k</div><div class="lbl">数据工程师年薪区间</div></div>
+      <div class="stat"><div class="num">130,000</div><div class="lbl">德国 IT 人才缺口（2025–2026）</div></div>
+      <div class="stat"><div class="num">€45,934</div><div class="lbl">蓝卡紧缺职业（IT）年薪门槛</div></div>
+    </div>
   </div>
 
-  <h2>💼 职位浏览器</h2>
-  <p class="muted">89 个德国数据工程相关职位，采集自 arbeitnow（2026-08-26）。支持关键词搜索、按城市 / 级别筛选、只看远程，点击表头排序。</p>
-
-  <div class="filters">
-    <input type="search" id="f-search" placeholder="搜索职位 / 公司 / 关键词，如 Python、Databricks、SumUp…">
-    <select id="f-city"><option value="">全部城市</option></select>
-    <select id="f-level">
-      <option value="">全部级别</option>
-      <option>Working Student</option>
-      <option>Junior</option>
-      <option>Mid/Junior</option>
-      <option>Mid</option>
-      <option>Senior</option>
-      <option>Lead</option>
-      <option>Staff/Principal</option>
-    </select>
-    <label class="chk"><input type="checkbox" id="f-remote"> 只看远程</label>
-  </div>
-  <div class="count" id="f-count"></div>
-
-  <div class="chart" id="city-chart"></div>
-
-  <table class="jobs-table" id="jobs-table">
-    <thead>
-      <tr>
-        <th class="sortable" data-key="t">职位名称 ⇅</th>
-        <th class="sortable" data-key="c">公司 ⇅</th>
-        <th class="sortable" data-key="l">地点 ⇅</th>
-        <th class="sortable" data-key="v">级别 ⇅</th>
-        <th>远程</th>
-        <th>链接</th>
-      </tr>
-    </thead>
-    <tbody id="jobs-body"></tbody>
-  </table>
-
-  <h2>📁 目录结构</h2>
-  <div class="tree">
-<span class="dir">job-market-data/</span><br>
-├── <span class="dir">README.md</span>              <span class="cmt"># 数据集说明 + 使用方法</span><br>
-├── <span class="dir">index.html</span>             <span class="cmt"># 本页面（GitHub Pages）</span><br>
-├── <span class="dir">data/</span>                  <span class="cmt"># 结构化数据（核心）</span><br>
-│   ├── <span class="dir">jobs.csv</span>           <span class="cmt"># 职位列表（89 条，2026-08 刷新）</span><br>
-│   ├── <span class="dir">market_data_2026.csv</span>   <span class="cmt"># 市场数据 CSV（49 条）</span><br>
-│   ├── <span class="dir">market_data_2026.json</span>  <span class="cmt"># 市场数据 JSON（层级结构）</span><br>
-│   └── <span class="dir">market_data_2026.xlsx</span>  <span class="cmt"># 市场数据 Excel</span><br>
-└── <span class="dir">reports/</span>               <span class="cmt"># 数据采集与分析报告</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="dir">jobs_analysis.md</span>          <span class="cmt"># 职位市场分析</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="dir">job_report.md</span>            <span class="cmt"># 89 个职位完整清单</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="dir">data_acquisition_2026.md</span> <span class="cmt"># 数据获取报告</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="dir">data_file_assessment.md</span>  <span class="cmt"># 数据文件评估</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;└── <span class="dir">info_fetch_test.md</span>       <span class="cmt"># 采集渠道测试</span>
+  <!-- ===== 详情视图 ===== -->
+  <div id="view-detail" class="detail">
+    <a class="back-link" href="#/">← 返回职位列表</a>
+    <h2 id="d-title"></h2>
+    <div class="src-box">
+      <div class="lbl">职位原链接（点击在新窗口打开，来自 arbeitnow）</div>
+      <a id="d-url" href="" target="_blank" rel="noopener"></a>
+    </div>
+    <div class="info-grid">
+      <div class="info-cell"><div class="k">公司</div><div class="val" id="d-company"></div></div>
+      <div class="info-cell"><div class="k">行业</div><div class="val" id="d-industry"></div></div>
+      <div class="info-cell"><div class="k">城市</div><div class="val" id="d-location"></div></div>
+      <div class="info-cell"><div class="k">级别</div><div class="val" id="d-level"></div></div>
+      <div class="info-cell"><div class="k">远程</div><div class="val" id="d-remote"></div></div>
+    </div>
+    <section>
+      <h3>职位简介</h3>
+      <p id="d-desc"></p>
+    </section>
+    <section>
+      <h3>技术栈方向</h3>
+      <div class="tags-line" id="d-techs"></div>
+    </section>
+    <section>
+      <h3 id="d-city-title">城市概况</h3>
+      <p id="d-city-info" class="muted"></p>
+    </section>
+    <section>
+      <h3>薪资参考</h3>
+      <div class="salary-box" id="d-salary"></div>
+    </section>
   </div>
 
   <h2>📊 数据集内容</h2>
-
-  <h3>1. 职位列表（jobs.csv）</h3>
-  <p>德国数据工程师职位汇总，含职位名称、公司、地点、级别、远程标记与链接，覆盖柏林、慕尼黑、汉堡、科隆、斯图加特、杜塞尔多夫及远程岗位。</p>
-
-  <h3>2. 市场数据（market_data_2026，三种格式同源）</h3>
-  <table>
-    <tr><th>类别</th><th>内容概要</th></tr>
-    <tr><td>薪资数据</td><td>全国平均 / 中位数、柏林·慕尼黑·法兰克福·斯图加特城市对比、数据工程师分级薪资（Junior €45–55k / Mid €60–75k / Senior €75–90k）</td></tr>
-    <tr><td>签证政策</td><td>机会卡（Chancenkarte）条件与评分系统、欧盟蓝卡薪资门槛（标准 €50,700 / 紧缺职业 €45,934）</td></tr>
-    <tr><td>市场需求</td><td>IT 人才缺口 13 万、AWS 投资与岗位创造、企业数据增长</td></tr>
-    <tr><td>技能需求</td><td>核心技能（Python / PySpark / SQL / AWS）与工具栈要求</td></tr>
-    <tr><td>机会卡评分</td><td>Chancenkarte 积分制逐项评分标准</td></tr>
-    <tr><td>城市对比 / 行业趋势</td><td>主要城市薪资与生活成本、2025–2026 市场走向</td></tr>
-  </table>
+  <p>本站数据来自开源数据集 <code>job-market-data</code>：职位列表 <code>data/jobs.csv</code>（89 条，含级别与远程标记），
+     市场数据 <code>data/market_data_2026.*</code>（49 条，CSV / JSON / Excel 三种格式，覆盖薪资、签证政策、市场需求、技能要求等 7 大类别）。</p>
 
   <h2>🛠 快速上手</h2>
   <pre><code>import pandas as pd
@@ -203,16 +207,7 @@ jobs = pd.read_csv("data/jobs.csv")           # 职位列表
 market = pd.read_csv("data/market_data_2026.csv")  # 市场数据（表格）
 
 with open("data/market_data_2026.json", encoding="utf-8") as f:
-    data = json.load(f)                       # 市场数据（层级结构）
-
-print(data["salary_data"]["data_engineer"]["salary_range"])
-# {'min': 60000, 'max': 90000, 'currency': 'EUR', ...}</code></pre>
-
-  <ul>
-    <li>表格分析 → CSV</li>
-    <li>程序处理 → JSON（保留层级与中德双语标注）</li>
-    <li>人工浏览 → Excel</li>
-  </ul>
+    data = json.load(f)                       # 市场数据（层级结构）</code></pre>
 
   <h2>📈 报告导读</h2>
   <div class="grid">
@@ -223,7 +218,7 @@ print(data["salary_data"]["data_engineer"]["salary_range"])
   </div>
 
   <div class="note">
-    <b>⚠️ 时效说明</b>：薪资与签证政策数据随时间变化，引用前请核对数据中的「年份」与「更新时间」字段，并以官方来源（Make it in Germany、Bundesagentur für Arbeit 等）为最终依据。职位列表为某一时点快照，链接可能过期，建议点击前先在 arbeitnow / LinkedIn 搜索最新状态。
+    <b>⚠️ 时效说明</b>：薪资与签证政策数据随时间变化，引用前请核对数据中的「年份」与「更新时间」字段，并以官方来源（Make it in Germany、Bundesagentur für Arbeit 等）为最终依据。职位详情页中的「职位简介」「技术栈方向」「薪资参考」为本站基于采集数据生成的参考信息，具体以职位原页为准。
   </div>
 
 </div>
@@ -234,33 +229,54 @@ print(data["salary_data"]["data_engineer"]["salary_range"])
 </footer>
 
 <script>
-const JOBS = [{"t":"(Junior) Data Engineer - Data Platform (m/f/d)","c":"1Komma5","l":"Berlin","v":"Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/1komma50/junior-data-engineer-data-platform-berlin-266979"},{"t":"Data Engineer","c":"All Your BI","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/all-your-bi/data-engineer-berlin-468631"},{"t":"Senior Data Engineer","c":"All Your BI","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/all-your-bi/senior-data-engineer-berlin-362738"},{"t":"Data Engineer","c":"Almedia","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/almedia/data-engineer-berlin-389443"},{"t":"Data Engineer (m/w/d)","c":"Angeheuert GmbH","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/angeheuert-gmbh-personalberatung/data-engineer-berlin-32772"},{"t":"Data Platform Engineer (m/w/d)","c":"Angeheuert GmbH","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/angeheuert-gmbh/data-platform-engineer-berlin-273541"},{"t":"Senior Data Engineer (m/w/d)","c":"Angeheuert GmbH","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/angeheuert-gmbh/senior-data-engineer-berlin-296119"},{"t":"Data Engineer","c":"Atolls","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/atolls/data-engineer-berlin-466297"},{"t":"Senior Data & Python Software Engineer","c":"Ceartas","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/ceartas/senior-data-python-software-engineer-berlin-87350"},{"t":"Senior Data Platform Engineer","c":"Choco","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/choco/senior-data-platform-engineer-berlin-111883"},{"t":"Data Engineer (f/m/d)","c":"Climate","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-316909"},{"t":"Senior Data Engineer (Databricks) (m/w/d)","c":"Collaboration Betters The World GmbH","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/collaboration-betters-the-world-gmbh/senior-data-engineer-databricks-berlin-352892"},{"t":"Software Engineer, Data","c":"Engelhart","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/engelhart/software-engineer-data-berlin-291596"},{"t":"Senior Data Engineer (f/m/d) metrify","c":"Enpal","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/enpal/senior-data-engineer-metrify-berlin-61854"},{"t":"Staff Data Engineer (f/m/d) metrify","c":"Enpal","l":"Berlin","v":"Staff/Principal","r":"","u":"https://www.arbeitnow.com/jobs/companies/enpal/staff-data-engineer-metrify-berlin-347291"},{"t":"Data Platform Engineer (m/f/d)","c":"Flix","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/flix/data-platform-engineer-berlin-59805"},{"t":"Senior Data Engineer","c":"GLS/NXT","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/glsnxt/senior-data-engineer-berlin-391080"},{"t":"(Senior) Data Engineer (m/w/d)","c":"Galvany","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/galvany/senior-data-engineer-berlin-262882"},{"t":"Data Engineer (all genders)","c":"Gropyus","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/gropyus/data-engineer-all-genders-berlin-berlin-461780"},{"t":"Senior Data Engineer (f/m/d)","c":"Gropyus","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/gropyus/senior-data-engineer-berlin-347344"},{"t":"Lead Engineer (m/f/d) Data Infrastructure","c":"MOTOR Ai","l":"Berlin","v":"Lead","r":"","u":"https://www.arbeitnow.com/jobs/companies/motor-ai/lead-engineer-data-infrastructure-berlin-249418"},{"t":"Data Engineer (f/m/d)","c":"Moonfare","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/moonfare/data-engineer-berlin-38343"},{"t":"Data Scientist / Data Engineer","c":"Nucs AI","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/nucs-ai/data-scientist-data-engineer-berlin-12132"},{"t":"Data Engineer (m/w/d) – Fokus Messdatenmanagement & Ownership","c":"Octopus Energy","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/octopus-energy-group/data-engineer-fokus-messdatenmanagement-ownership-berlin-de-197367"},{"t":"Data Engineer","c":"Pergolux","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/pergolux/data-engineer-berlin-36164"},{"t":"Senior Data Engineer, Constellation Services","c":"Planet Labs","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/planetlabs/senior-data-engineer-constellation-services-berlin-275061"},{"t":"Working Student Data Engineer (m/f/d)","c":"Raisin","l":"Berlin","v":"Working Student","r":"","u":"https://www.arbeitnow.com/jobs/companies/raisin/working-student-data-engineer-berlin-berlin-303757"},{"t":"Senior Data Platform Engineer","c":"Smartly","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/smartly/senior-data-platform-engineer-berlin-172988"},{"t":"Software Engineer, Data Infrastructure & Acquisition - Berlin, Germany","c":"Speechify","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/speechify/software-engineer-data-infrastructure-acquisition-berlin-germany-374168"},{"t":"Staff Engineer, Data & Analytics","c":"Staffbase","l":"Berlin","v":"Staff/Principal","r":"","u":"https://www.arbeitnow.com/jobs/companies/staffbase/staff-engineer-data-analytics-berlin-brandenburg-181077"},{"t":"Data Engineer","c":"SumUp","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/sumup/data-engineer-berlin-319528"},{"t":"Senior Data Scientist/ML Engineer - Financial Crime","c":"SumUp","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/sumup/senior-data-scientist-ml-engineer-financial-crime-berlin-185839"},{"t":"Senior Machine Learning Engineer I","c":"SumUp","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/sumup/senior-machine-learning-engineer-i-berlin-296351"},{"t":"Data Engineer","c":"Superhuman","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/superhuman/data-engineer-berlin-89243"},{"t":"Data Engineer","c":"Superhuman Platform Inc","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/superhuman/data-engineer-berlin-279973"},{"t":"Data Engineer / Data Scientist (m/f/x)","c":"Targomo Casafari GmbH","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/targomo-casafari-gmbh/data-engineer-data-scientist-berlin-22129"},{"t":"(Senior) Data Engineer - Data Platform (m/f/d)","c":"Unzer","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/unzer/senior-data-engineer-data-platform-berlin-154140"},{"t":"Analytics Engineer, Payments Intelligence","c":"Vinteden","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/vinteden/analytics-engineer-payments-intelligence-berlin-224168"},{"t":"Staff Engineer - Data Platform (m|w|d)","c":"idealo internet GmbH","l":"Berlin","v":"Staff/Principal","r":"","u":"https://www.arbeitnow.com/jobs/companies/idealo-internet-gmbh/staff-engineer-data-platform-mwd-berlin-380934"},{"t":"Senior Data Engineer","c":"trawa","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/trawa/senior-data-engineer-berlin-179460"},{"t":"Principal Data Engineer (m/w/d)","c":"Alexander Thamm GmbH","l":"Munich","v":"Staff/Principal","r":"","u":"https://www.arbeitnow.com/jobs/companies/alexander-thamm-gmbh/principal-data-engineer-munchen-77292"},{"t":"Senior Data Engineer (m/w/d)","c":"Alexander Thamm GmbH","l":"Munich","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/alexander-thamm-gmbh/senior-data-engineer-munchen-361544"},{"t":"Senior Data Scientist (m/w/d) - Chemical Engineering & Verfahrenstechnik","c":"Alexander Thamm GmbH","l":"Munich","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/alexander-thamm-gmbh/senior-data-scientist-chemical-engineering-verfahrenstechnik-hybrid-munchen-53405"},{"t":"Senior Data Visualization Engineer - Microsoft Fabric (m/w/d)","c":"Alexander Thamm GmbH","l":"Munich","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/alexander-thamm-gmbh/senior-data-visualization-engineer-microsoft-fabric-hybrid-munchen-273332"},{"t":"Data Engineer","c":"Atolls","l":"Munich","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/atolls/data-engineer-munich-309780"},{"t":"Senior Software Engineer – Data Ingestion & Extraction (m/f/d)","c":"Certivity","l":"Munich","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/certivity/senior-software-engineer-data-ingestion-extraction-munchen-hq-218511"},{"t":"Senior Data Engineer (m/w/d) – Snowflake","c":"Jobrad Loop","l":"Munich","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/jobrad-loop/senior-data-engineer-snowflake-munchen-10090"},{"t":"DATA ENGINEER (f/m/d)","c":"Omnisent","l":"Munich","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/omnisent/data-engineer-munich-208534"},{"t":"Data Platform Engineer Working Student (m/w/d)","c":"Trusteq GmbH","l":"Munich","v":"Working Student","r":"","u":"https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-platform-engineer-working-student-munchen-230477"},{"t":"Data Engineer (m/w/d) - Azure Cloud & MS Fabric","c":"Doehle","l":"Hamburg","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/doehle/data-engineer-azure-cloud-ms-fabric-hamburg-82581"},{"t":"Software Engineer, Data Infrastructure & Acquisition - Hamburg, Germany","c":"Speechify","l":"Hamburg","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/speechify/software-engineer-data-infrastructure-acquisition-hamburg-germany-252312"},{"t":"Senior Data Engineer (f/m/d)","c":"ZEAL Network","l":"Hamburg","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/zeal-network/senior-data-engineer-hamburg-360638"},{"t":"Senior Data Engineer (f/m/d)","c":"adjoe","l":"Hamburg","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/adjoe/senior-data-engineer-hamburg-78506"},{"t":"Data Analyst (all genders)","c":"muvn","l":"Hamburg","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/muvn/data-analyst-all-genders-hamburg-222708"},{"t":"Senior Software Engineer, Data","c":"Circonomit","l":"Cologne","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/circonomit/senior-software-engineer-data-cologne-27546"},{"t":"Software Engineer - Data (All Genders)","c":"PREMATCH Sports GmbH","l":"Cologne","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/prematch-sports-gmbh/software-engineer-data-all-genders-koln-358585"},{"t":"Software Engineer, Data Infrastructure & Acquisition - Cologne, Germany","c":"Speechify","l":"Cologne","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/speechify/software-engineer-data-infrastructure-acquisition-cologne-germany-114349"},{"t":"Principal Data Engineer (m/f/d)","c":"Thoughtworks","l":"Cologne","v":"Staff/Principal","r":"","u":"https://www.arbeitnow.com/jobs/companies/thoughtworks/principal-data-engineer-cologne-440133"},{"t":"Data Engineer Working Student (m/w/d)","c":"Trusteq GmbH","l":"Cologne","v":"Working Student","r":"","u":"https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-engineer-working-student-koln-358872"},{"t":"Data Engineer (m/f/d)","c":"DISH Digital Solutions GmbH","l":"Dusseldorf","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/dishdigital/data-engineer-dusseldorf-363424"},{"t":"Senior Data Engineer (m/f/d)","c":"DISH Digital Solutions GmbH","l":"Dusseldorf","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/dishdigital/senior-data-engineer-dusseldorf-259265"},{"t":"Data Engineer - AI Pipelines & DataOps","c":"Intersnack IT KG","l":"Dusseldorf","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/intersnack-it-kg/data-engineer-ai-pipelines-dataops-dusseldorf-452480"},{"t":"Data Engineer - AFRICOM","c":"Agile Defense","l":"Stuttgart","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/agile-defense/data-engineer-africom-stuttgart-germany-50591"},{"t":"Data Engineer (Professional) (Databricks) (m/w/d)","c":"Collaboration Betters The World GmbH","l":"Stuttgart","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/collaboration-betters-the-world-gmbh/data-engineer-professional-databricks-stuttgart-296815"},{"t":"Junior Data Engineer (Databricks) (m/w/d)","c":"Collaboration Betters The World GmbH","l":"Stuttgart","v":"Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/collaboration-betters-the-world-gmbh/junior-data-engineer-databricks-stuttgart-267806"},{"t":"Senior Data Engineer (Databricks) (m/w/d)","c":"Collaboration Betters The World GmbH","l":"Stuttgart","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/collaboration-betters-the-world-gmbh/senior-data-engineer-databricks-stuttgart-156226"},{"t":"Data Analyst / Analytics Engineer (m/w/d)","c":"AccountOne GmbH","l":"Flensburg","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/accountone-gmbh/data-analyst-analytics-engineer-flensburg-194471"},{"t":"AI & Data Science Engineer (m/w/d)","c":"CIGUS GmbH","l":"Oberkochen","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/cigus-gmbh/ai-data-science-engineer-oberkochen-124893"},{"t":"Senior Cloud Data Infrastructure Engineer","c":"ClickHouse","l":"Germany (Remote)","v":"Senior","r":"Yes","u":"https://www.arbeitnow.com/jobs/companies/clickhouse/senior-cloud-data-infrastructure-engineer-34130"},{"t":"Senior Software Engineer - Python and Data Ecosystem","c":"ClickHouse","l":"Germany (Remote)","v":"Senior","r":"Yes","u":"https://www.arbeitnow.com/jobs/companies/clickhouse/senior-software-engineer-python-and-data-ecosystem-496014"},{"t":"Data Engineering Leader","c":"Cognite","l":"Germany","v":"Lead","r":"","u":"https://www.arbeitnow.com/jobs/companies/cognite/data-engineering-leader-319108"},{"t":"Principal Software Engineer - Data Lakes","c":"Fivetran","l":"Germany (Remote)","v":"Staff/Principal","r":"Yes","u":"https://www.arbeitnow.com/jobs/companies/fivetran/remote-principal-software-engineer-data-lakes-398416"},{"t":"Senior Data Engineer - Databricks","c":"Intetics","l":"Germany (Remote)","v":"Senior","r":"Yes","u":"https://www.arbeitnow.com/jobs/companies/intetics-2/remote-senior-data-engineer-databricks-germany-237374"},{"t":"Mid Data Engineer","c":"Jimdo","l":"Germany (Remote)","v":"Mid","r":"Yes","u":"https://www.arbeitnow.com/jobs/companies/jimdo/mid-data-engineer-germany-293463"},{"t":"Senior Data Engineer (m/w/x)","c":"K-Tronik GmbH","l":"Dresden","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/k-tronik-gmbh/senior-data-engineer-dresden-162970"},{"t":"Senior Data Platform Engineer (all genders) - Data Lake Platform","c":"MOIA","l":"Berlin / Hamburg","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/moia/senior-data-platform-engineer-all-genders-data-lake-platform-berlin-hamburg-58977"},{"t":"Senior/Lead Software Data Engineer (Roads Team)","c":"Mapbox","l":"Germany","v":"Lead","r":"","u":"https://www.arbeitnow.com/jobs/companies/mapbox/senior-lead-software-data-engineer-roads-team-mapbox-germany-359607"},{"t":"AI & Data Engineer (m/w/d)","c":"PeakSoft GmbH","l":"Wuppertal","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/peaksoft-gmbh/ai-data-engineer-wuppertal-419595"},{"t":"Data Engineer (m/w/d)","c":"Rewire","l":"Heidelberg","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/rewire/data-engineer-heidelberg-51709"},{"t":"AI-First Data Engineer (m/f/d)","c":"Sport Alliance GmbH","l":"Germany (Remote)","v":"Mid/Junior","r":"Yes","u":"https://www.arbeitnow.com/jobs/companies/sport-alliance-gmbh/remote-ai-first-data-engineer-364870"},{"t":"Staff Engineer, Data & Analytics","c":"Staffbase","l":"Chemnitz","v":"Staff/Principal","r":"","u":"https://www.arbeitnow.com/jobs/companies/staffbase/staff-engineer-data-analytics-chemnitz-sachsen-115754"},{"t":"Staff Engineer, Data & Analytics","c":"Staffbase","l":"Dresden","v":"Staff/Principal","r":"","u":"https://www.arbeitnow.com/jobs/companies/staffbase/staff-engineer-data-analytics-dresden-sachsen-18817"},{"t":"(Junior) Data Engineer (m/w/d)","c":"Stahlwerk Annahütte","l":"Ainring","v":"Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/stahlwerk-annahutte-max-aicher-gmbh-co-kg/junior-data-engineer-ainring-376653"},{"t":"Data Engineer (m/f/d)","c":"Statista","l":"Hamburg or Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/statista/data-engineer-hamburg-or-berlin-92068"},{"t":"Data Engineer","c":"Wayve","l":"Germany","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/wayve/data-engineer-352712"},{"t":"Data-Plattform Engineer (Fabric / Databricks) (m/w/d)","c":"ailio GmbH","l":"Bielefeld","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/ailio-gmbh/data-plattform-engineer-fabric-databricks-bielefeld-273667"},{"t":"Senior Data Engineer (m/w/d)","c":"celebrate company GmbH","l":"Gilching (Remote)","v":"Senior","r":"Yes","u":"https://www.arbeitnow.com/jobs/companies/celebrate-company-gmbh/remote-senior-data-engineer-gilching-244485"},{"t":"Materials Data Engineer (AI for Science, Knowledge Graphs) - Developer (m/f/d)","c":"datin GmbH","l":"Karlsruhe","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/datin-gmbh/agentic-ai-for-science-developer-karlsruhe-81355"},{"t":"Data Platform Engineer (m/w/d)","c":"hubside die recruitingwerkstatt","l":"Landsberg am Lech","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/hubside-die-recruitingwerkstatt/data-platform-engineer-landsberg-am-lech-125930"}];
+const JOBS = [{"t":"(Junior) Data Engineer - Data Platform (m/f/d)","c":"1Komma5","l":"Berlin","v":"Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/1komma50/junior-data-engineer-data-platform-berlin-266979","i":"能源科技（太阳能）","k":["数据平台"],"d":"1Komma5 是一家能源科技（太阳能）领域的公司，正在招聘该数据工程职位。岗位定位为初级岗位，适合 0–2 年经验或转岗初期的候选人，方向上属于数据平台与基础设施方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Engineer","c":"All Your BI","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/all-your-bi/data-engineer-berlin-468631","i":"商业智能（BI 服务）","k":["数据工程（具体栈见职位描述）"],"d":"All Your BI 是一家商业智能（BI 服务）领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Data Engineer","c":"All Your BI","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/all-your-bi/senior-data-engineer-berlin-362738","i":"商业智能（BI 服务）","k":["数据工程（具体栈见职位描述）"],"d":"All Your BI 是一家商业智能（BI 服务）领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Engineer","c":"Almedia","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/almedia/data-engineer-berlin-389443","i":"数字营销与广告","k":["数据工程（具体栈见职位描述）"],"d":"Almedia 是一家数字营销与广告领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Engineer (m/w/d)","c":"Angeheuert GmbH","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/angeheuert-gmbh-personalberatung/data-engineer-berlin-32772","i":"IT 招聘咨询","k":["数据工程（具体栈见职位描述）"],"d":"Angeheuert GmbH 是一家IT 招聘咨询领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Platform Engineer (m/w/d)","c":"Angeheuert GmbH","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/angeheuert-gmbh/data-platform-engineer-berlin-273541","i":"IT 招聘咨询","k":["数据平台"],"d":"Angeheuert GmbH 是一家IT 招聘咨询领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于数据平台与基础设施方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Data Engineer (m/w/d)","c":"Angeheuert GmbH","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/angeheuert-gmbh/senior-data-engineer-berlin-296119","i":"IT 招聘咨询","k":["数据工程（具体栈见职位描述）"],"d":"Angeheuert GmbH 是一家IT 招聘咨询领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Engineer","c":"Atolls","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/atolls/data-engineer-berlin-466297","i":"电商","k":["数据工程（具体栈见职位描述）"],"d":"Atolls 是一家电商领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Data & Python Software Engineer","c":"Ceartas","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/ceartas/senior-data-python-software-engineer-berlin-87350","i":"品牌保护科技","k":["Python"],"d":"Ceartas 是一家品牌保护科技领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Data Platform Engineer","c":"Choco","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/choco/senior-data-platform-engineer-berlin-111883","i":"食品供应链科技","k":["数据平台"],"d":"Choco 是一家食品供应链科技领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于数据平台与基础设施方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Engineer (f/m/d)","c":"Climate","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-316909","i":"气候科技（碳管理）","k":["数据工程（具体栈见职位描述）"],"d":"Climate 是一家气候科技（碳管理）领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Data Engineer (Databricks) (m/w/d)","c":"Collaboration Betters The World GmbH","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/collaboration-betters-the-world-gmbh/senior-data-engineer-databricks-berlin-352892","i":"会议与活动科技","k":["Databricks"],"d":"Collaboration Betters The World GmbH 是一家会议与活动科技领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于现代数据仓库 / 湖仓方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Software Engineer, Data","c":"Engelhart","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/engelhart/software-engineer-data-berlin-291596","i":"大宗商品贸易","k":["数据工程（具体栈见职位描述）"],"d":"Engelhart 是一家大宗商品贸易领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Data Engineer (f/m/d) metrify","c":"Enpal","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/enpal/senior-data-engineer-metrify-berlin-61854","i":"能源科技（太阳能租赁）","k":["数据工程（具体栈见职位描述）"],"d":"Enpal 是一家能源科技（太阳能租赁）领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Staff Data Engineer (f/m/d) metrify","c":"Enpal","l":"Berlin","v":"Staff/Principal","r":"","u":"https://www.arbeitnow.com/jobs/companies/enpal/staff-data-engineer-metrify-berlin-347291","i":"能源科技（太阳能租赁）","k":["数据工程（具体栈见职位描述）"],"d":"Enpal 是一家能源科技（太阳能租赁）领域的公司，正在招聘该数据工程职位。岗位定位为资深专家岗位，要求 6–8 年以上经验并具备跨组织技术影响力，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Platform Engineer (m/f/d)","c":"Flix","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/flix/data-platform-engineer-berlin-59805","i":"出行科技（FlixBus）","k":["数据平台"],"d":"Flix 是一家出行科技（FlixBus）领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于数据平台与基础设施方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Data Engineer","c":"GLS/NXT","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/glsnxt/senior-data-engineer-berlin-391080","i":"物流科技","k":["数据工程（具体栈见职位描述）"],"d":"GLS/NXT 是一家物流科技领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"(Senior) Data Engineer (m/w/d)","c":"Galvany","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/galvany/senior-data-engineer-berlin-262882","i":"IT 服务","k":["数据工程（具体栈见职位描述）"],"d":"Galvany 是一家IT 服务领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Engineer (all genders)","c":"Gropyus","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/gropyus/data-engineer-all-genders-berlin-berlin-461780","i":"建筑科技（智能建造）","k":["数据工程（具体栈见职位描述）"],"d":"Gropyus 是一家建筑科技（智能建造）领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Data Engineer (f/m/d)","c":"Gropyus","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/gropyus/senior-data-engineer-berlin-347344","i":"建筑科技（智能建造）","k":["数据工程（具体栈见职位描述）"],"d":"Gropyus 是一家建筑科技（智能建造）领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Lead Engineer (m/f/d) Data Infrastructure","c":"MOTOR Ai","l":"Berlin","v":"Lead","r":"","u":"https://www.arbeitnow.com/jobs/companies/motor-ai/lead-engineer-data-infrastructure-berlin-249418","i":"自动驾驶 AI","k":["数据基础设施"],"d":"MOTOR Ai 是一家自动驾驶 AI领域的公司，正在招聘该数据工程职位。岗位定位为负责人岗位，除技术外需带领小型团队或跨团队项目，方向上属于数据平台与基础设施方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Engineer (f/m/d)","c":"Moonfare","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/moonfare/data-engineer-berlin-38343","i":"金融科技（资管平台）","k":["数据工程（具体栈见职位描述）"],"d":"Moonfare 是一家金融科技（资管平台）领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Scientist / Data Engineer","c":"Nucs AI","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/nucs-ai/data-scientist-data-engineer-berlin-12132","i":"医疗 AI","k":["数据工程（具体栈见职位描述）"],"d":"Nucs AI 是一家医疗 AI领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Engineer (m/w/d) – Fokus Messdatenmanagement & Ownership","c":"Octopus Energy","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/octopus-energy-group/data-engineer-fokus-messdatenmanagement-ownership-berlin-de-197367","i":"能源科技","k":["数据工程（具体栈见职位描述）"],"d":"Octopus Energy 是一家能源科技领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Engineer","c":"Pergolux","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/pergolux/data-engineer-berlin-36164","i":"电商（户外产品）","k":["数据工程（具体栈见职位描述）"],"d":"Pergolux 是一家电商（户外产品）领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Data Engineer, Constellation Services","c":"Planet Labs","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/planetlabs/senior-data-engineer-constellation-services-berlin-275061","i":"卫星遥感与地理数据","k":["数据工程（具体栈见职位描述）"],"d":"Planet Labs 是一家卫星遥感与地理数据领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Working Student Data Engineer (m/f/d)","c":"Raisin","l":"Berlin","v":"Working Student","r":"","u":"https://www.arbeitnow.com/jobs/companies/raisin/working-student-data-engineer-berlin-berlin-303757","i":"金融科技（储蓄平台）","k":["数据工程（具体栈见职位描述）"],"d":"Raisin 是一家金融科技（储蓄平台）领域的公司，正在招聘该数据工程职位。岗位定位为面向在读学生的工作学生岗位，以兼职形式参与团队日常数据工作，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Data Platform Engineer","c":"Smartly","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/smartly/senior-data-platform-engineer-berlin-172988","i":"广告科技","k":["数据平台"],"d":"Smartly 是一家广告科技领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于数据平台与基础设施方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Software Engineer, Data Infrastructure & Acquisition - Berlin, Germany","c":"Speechify","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/speechify/software-engineer-data-infrastructure-acquisition-berlin-germany-374168","i":"语音技术","k":["数据基础设施"],"d":"Speechify 是一家语音技术领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于数据平台与基础设施方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Staff Engineer, Data & Analytics","c":"Staffbase","l":"Berlin","v":"Staff/Principal","r":"","u":"https://www.arbeitnow.com/jobs/companies/staffbase/staff-engineer-data-analytics-berlin-brandenburg-181077","i":"企业软件（员工沟通）","k":["数据分析"],"d":"Staffbase 是一家企业软件（员工沟通）领域的公司，正在招聘该数据工程职位。岗位定位为资深专家岗位，要求 6–8 年以上经验并具备跨组织技术影响力，方向上属于商业智能与数据分析方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Engineer","c":"SumUp","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/sumup/data-engineer-berlin-319528","i":"金融科技（支付服务）","k":["数据工程（具体栈见职位描述）"],"d":"SumUp 是一家金融科技（支付服务）领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Data Scientist/ML Engineer - Financial Crime","c":"SumUp","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/sumup/senior-data-scientist-ml-engineer-financial-crime-berlin-185839","i":"金融科技（支付服务）","k":["机器学习"],"d":"SumUp 是一家金融科技（支付服务）领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于机器学习与数据系统结合方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Machine Learning Engineer I","c":"SumUp","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/sumup/senior-machine-learning-engineer-i-berlin-296351","i":"金融科技（支付服务）","k":["机器学习"],"d":"SumUp 是一家金融科技（支付服务）领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于机器学习与数据系统结合方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Engineer","c":"Superhuman","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/superhuman/data-engineer-berlin-89243","i":"软件（效率工具）","k":["数据工程（具体栈见职位描述）"],"d":"Superhuman 是一家软件（效率工具）领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Engineer","c":"Superhuman Platform Inc","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/superhuman/data-engineer-berlin-279973","i":"软件（效率工具）","k":["数据工程（具体栈见职位描述）"],"d":"Superhuman Platform Inc 是一家软件（效率工具）领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Engineer / Data Scientist (m/f/x)","c":"Targomo Casafari GmbH","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/targomo-casafari-gmbh/data-engineer-data-scientist-berlin-22129","i":"地理位置智能 / 地产科技","k":["数据工程（具体栈见职位描述）"],"d":"Targomo Casafari GmbH 是一家地理位置智能 / 地产科技领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"(Senior) Data Engineer - Data Platform (m/f/d)","c":"Unzer","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/unzer/senior-data-engineer-data-platform-berlin-154140","i":"支付服务","k":["数据平台"],"d":"Unzer 是一家支付服务领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于数据平台与基础设施方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Analytics Engineer, Payments Intelligence","c":"Vinteden","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/vinteden/analytics-engineer-payments-intelligence-berlin-224168","i":"金融科技","k":["数据分析"],"d":"Vinteden 是一家金融科技领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于商业智能与数据分析方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Staff Engineer - Data Platform (m|w|d)","c":"idealo internet GmbH","l":"Berlin","v":"Staff/Principal","r":"","u":"https://www.arbeitnow.com/jobs/companies/idealo-internet-gmbh/staff-engineer-data-platform-mwd-berlin-380934","i":"电商比价平台","k":["数据平台"],"d":"idealo internet GmbH 是一家电商比价平台领域的公司，正在招聘该数据工程职位。岗位定位为资深专家岗位，要求 6–8 年以上经验并具备跨组织技术影响力，方向上属于数据平台与基础设施方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Data Engineer","c":"trawa","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/trawa/senior-data-engineer-berlin-179460","i":"能源科技（绿电）","k":["数据工程（具体栈见职位描述）"],"d":"trawa 是一家能源科技（绿电）领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Principal Data Engineer (m/w/d)","c":"Alexander Thamm GmbH","l":"Munich","v":"Staff/Principal","r":"","u":"https://www.arbeitnow.com/jobs/companies/alexander-thamm-gmbh/principal-data-engineer-munchen-77292","i":"数据科学咨询","k":["数据工程（具体栈见职位描述）"],"d":"Alexander Thamm GmbH 是一家数据科学咨询领域的公司，正在招聘该数据工程职位。岗位定位为资深专家岗位，要求 6–8 年以上经验并具备跨组织技术影响力，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Data Engineer (m/w/d)","c":"Alexander Thamm GmbH","l":"Munich","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/alexander-thamm-gmbh/senior-data-engineer-munchen-361544","i":"数据科学咨询","k":["数据工程（具体栈见职位描述）"],"d":"Alexander Thamm GmbH 是一家数据科学咨询领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Data Scientist (m/w/d) - Chemical Engineering & Verfahrenstechnik","c":"Alexander Thamm GmbH","l":"Munich","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/alexander-thamm-gmbh/senior-data-scientist-chemical-engineering-verfahrenstechnik-hybrid-munchen-53405","i":"数据科学咨询","k":["数据工程（具体栈见职位描述）"],"d":"Alexander Thamm GmbH 是一家数据科学咨询领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Data Visualization Engineer - Microsoft Fabric (m/w/d)","c":"Alexander Thamm GmbH","l":"Munich","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/alexander-thamm-gmbh/senior-data-visualization-engineer-microsoft-fabric-hybrid-munchen-273332","i":"数据科学咨询","k":["Microsoft Fabric","数据可视化"],"d":"Alexander Thamm GmbH 是一家数据科学咨询领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于商业智能与数据分析方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Engineer","c":"Atolls","l":"Munich","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/atolls/data-engineer-munich-309780","i":"电商","k":["数据工程（具体栈见职位描述）"],"d":"Atolls 是一家电商领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Software Engineer – Data Ingestion & Extraction (m/f/d)","c":"Certivity","l":"Munich","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/certivity/senior-software-engineer-data-ingestion-extraction-munchen-hq-218511","i":"合规科技（汽车）","k":["数据管道"],"d":"Certivity 是一家合规科技（汽车）领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于数据管道与集成方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Data Engineer (m/w/d) – Snowflake","c":"Jobrad Loop","l":"Munich","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/jobrad-loop/senior-data-engineer-snowflake-munchen-10090","i":"员工福利平台","k":["Snowflake","数据湖"],"d":"Jobrad Loop 是一家员工福利平台领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于现代数据仓库 / 湖仓方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"DATA ENGINEER (f/m/d)","c":"Omnisent","l":"Munich","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/omnisent/data-engineer-munich-208534","i":"软件（语音 AI）","k":["数据工程（具体栈见职位描述）"],"d":"Omnisent 是一家软件（语音 AI）领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Platform Engineer Working Student (m/w/d)","c":"Trusteq GmbH","l":"Munich","v":"Working Student","r":"","u":"https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-platform-engineer-working-student-munchen-230477","i":"IT 咨询与测试","k":["数据平台"],"d":"Trusteq GmbH 是一家IT 咨询与测试领域的公司，正在招聘该数据工程职位。岗位定位为面向在读学生的工作学生岗位，以兼职形式参与团队日常数据工作，方向上属于数据平台与基础设施方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Engineer (m/w/d) - Azure Cloud & MS Fabric","c":"Doehle","l":"Hamburg","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/doehle/data-engineer-azure-cloud-ms-fabric-hamburg-82581","i":"物流与航运服务","k":["Microsoft Fabric","Azure","云架构"],"d":"Doehle 是一家物流与航运服务领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于现代数据仓库 / 湖仓方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Software Engineer, Data Infrastructure & Acquisition - Hamburg, Germany","c":"Speechify","l":"Hamburg","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/speechify/software-engineer-data-infrastructure-acquisition-hamburg-germany-252312","i":"语音技术","k":["数据基础设施"],"d":"Speechify 是一家语音技术领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于数据平台与基础设施方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Data Engineer (f/m/d)","c":"ZEAL Network","l":"Hamburg","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/zeal-network/senior-data-engineer-hamburg-360638","i":"线上博彩","k":["数据工程（具体栈见职位描述）"],"d":"ZEAL Network 是一家线上博彩领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Data Engineer (f/m/d)","c":"adjoe","l":"Hamburg","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/adjoe/senior-data-engineer-hamburg-78506","i":"广告科技","k":["数据工程（具体栈见职位描述）"],"d":"adjoe 是一家广告科技领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Analyst (all genders)","c":"muvn","l":"Hamburg","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/muvn/data-analyst-all-genders-hamburg-222708","i":"出行科技","k":["数据工程（具体栈见职位描述）"],"d":"muvn 是一家出行科技领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Software Engineer, Data","c":"Circonomit","l":"Cologne","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/circonomit/senior-software-engineer-data-cologne-27546","i":"循环经济科技","k":["数据工程（具体栈见职位描述）"],"d":"Circonomit 是一家循环经济科技领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Software Engineer - Data (All Genders)","c":"PREMATCH Sports GmbH","l":"Cologne","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/prematch-sports-gmbh/software-engineer-data-all-genders-koln-358585","i":"体育科技","k":["数据工程（具体栈见职位描述）"],"d":"PREMATCH Sports GmbH 是一家体育科技领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Software Engineer, Data Infrastructure & Acquisition - Cologne, Germany","c":"Speechify","l":"Cologne","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/speechify/software-engineer-data-infrastructure-acquisition-cologne-germany-114349","i":"语音技术","k":["数据基础设施"],"d":"Speechify 是一家语音技术领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于数据平台与基础设施方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Principal Data Engineer (m/f/d)","c":"Thoughtworks","l":"Cologne","v":"Staff/Principal","r":"","u":"https://www.arbeitnow.com/jobs/companies/thoughtworks/principal-data-engineer-cologne-440133","i":"IT 咨询与软件开发","k":["数据工程（具体栈见职位描述）"],"d":"Thoughtworks 是一家IT 咨询与软件开发领域的公司，正在招聘该数据工程职位。岗位定位为资深专家岗位，要求 6–8 年以上经验并具备跨组织技术影响力，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Engineer Working Student (m/w/d)","c":"Trusteq GmbH","l":"Cologne","v":"Working Student","r":"","u":"https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-engineer-working-student-koln-358872","i":"IT 咨询与测试","k":["数据工程（具体栈见职位描述）"],"d":"Trusteq GmbH 是一家IT 咨询与测试领域的公司，正在招聘该数据工程职位。岗位定位为面向在读学生的工作学生岗位，以兼职形式参与团队日常数据工作，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Engineer (m/f/d)","c":"DISH Digital Solutions GmbH","l":"Dusseldorf","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/dishdigital/data-engineer-dusseldorf-363424","i":"电信与数字服务","k":["数据工程（具体栈见职位描述）"],"d":"DISH Digital Solutions GmbH 是一家电信与数字服务领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Data Engineer (m/f/d)","c":"DISH Digital Solutions GmbH","l":"Dusseldorf","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/dishdigital/senior-data-engineer-dusseldorf-259265","i":"电信与数字服务","k":["数据工程（具体栈见职位描述）"],"d":"DISH Digital Solutions GmbH 是一家电信与数字服务领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Engineer - AI Pipelines & DataOps","c":"Intersnack IT KG","l":"Dusseldorf","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/intersnack-it-kg/data-engineer-ai-pipelines-dataops-dusseldorf-452480","i":"食品工业（IT 子公司）","k":["AI","数据管道"],"d":"Intersnack IT KG 是一家食品工业（IT 子公司）领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于AI 数据基础设施方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Engineer - AFRICOM","c":"Agile Defense","l":"Stuttgart","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/agile-defense/data-engineer-africom-stuttgart-germany-50591","i":"IT 服务（国防/政府）","k":["数据工程（具体栈见职位描述）"],"d":"Agile Defense 是一家IT 服务（国防/政府）领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Engineer (Professional) (Databricks) (m/w/d)","c":"Collaboration Betters The World GmbH","l":"Stuttgart","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/collaboration-betters-the-world-gmbh/data-engineer-professional-databricks-stuttgart-296815","i":"会议与活动科技","k":["Databricks"],"d":"Collaboration Betters The World GmbH 是一家会议与活动科技领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于现代数据仓库 / 湖仓方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Junior Data Engineer (Databricks) (m/w/d)","c":"Collaboration Betters The World GmbH","l":"Stuttgart","v":"Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/collaboration-betters-the-world-gmbh/junior-data-engineer-databricks-stuttgart-267806","i":"会议与活动科技","k":["Databricks"],"d":"Collaboration Betters The World GmbH 是一家会议与活动科技领域的公司，正在招聘该数据工程职位。岗位定位为初级岗位，适合 0–2 年经验或转岗初期的候选人，方向上属于现代数据仓库 / 湖仓方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Data Engineer (Databricks) (m/w/d)","c":"Collaboration Betters The World GmbH","l":"Stuttgart","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/collaboration-betters-the-world-gmbh/senior-data-engineer-databricks-stuttgart-156226","i":"会议与活动科技","k":["Databricks"],"d":"Collaboration Betters The World GmbH 是一家会议与活动科技领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于现代数据仓库 / 湖仓方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Analyst / Analytics Engineer (m/w/d)","c":"AccountOne GmbH","l":"Flensburg","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/accountone-gmbh/data-analyst-analytics-engineer-flensburg-194471","i":"财务科技（会计自动化）","k":["数据分析"],"d":"AccountOne GmbH 是一家财务科技（会计自动化）领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于商业智能与数据分析方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"AI & Data Science Engineer (m/w/d)","c":"CIGUS GmbH","l":"Oberkochen","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/cigus-gmbh/ai-data-science-engineer-oberkochen-124893","i":"光学与精密制造（蔡司集团）","k":["AI"],"d":"CIGUS GmbH 是一家光学与精密制造（蔡司集团）领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于AI 数据基础设施方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Cloud Data Infrastructure Engineer","c":"ClickHouse","l":"Germany (Remote)","v":"Senior","r":"Yes","u":"https://www.arbeitnow.com/jobs/companies/clickhouse/senior-cloud-data-infrastructure-engineer-34130","i":"开源数据库","k":["数据基础设施","云架构"],"d":"ClickHouse 是一家开源数据库领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于数据平台与基础设施方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。该岗位支持远程工作。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Software Engineer - Python and Data Ecosystem","c":"ClickHouse","l":"Germany (Remote)","v":"Senior","r":"Yes","u":"https://www.arbeitnow.com/jobs/companies/clickhouse/senior-software-engineer-python-and-data-ecosystem-496014","i":"开源数据库","k":["Python"],"d":"ClickHouse 是一家开源数据库领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。该岗位支持远程工作。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Engineering Leader","c":"Cognite","l":"Germany","v":"Lead","r":"","u":"https://www.arbeitnow.com/jobs/companies/cognite/data-engineering-leader-319108","i":"工业数据平台","k":["数据工程（具体栈见职位描述）"],"d":"Cognite 是一家工业数据平台领域的公司，正在招聘该数据工程职位。岗位定位为负责人岗位，除技术外需带领小型团队或跨团队项目，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Principal Software Engineer - Data Lakes","c":"Fivetran","l":"Germany (Remote)","v":"Staff/Principal","r":"Yes","u":"https://www.arbeitnow.com/jobs/companies/fivetran/remote-principal-software-engineer-data-lakes-398416","i":"数据集成","k":["数据湖"],"d":"Fivetran 是一家数据集成领域的公司，正在招聘该数据工程职位。岗位定位为资深专家岗位，要求 6–8 年以上经验并具备跨组织技术影响力，方向上属于现代数据仓库 / 湖仓方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。该岗位支持远程工作。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Data Engineer - Databricks","c":"Intetics","l":"Germany (Remote)","v":"Senior","r":"Yes","u":"https://www.arbeitnow.com/jobs/companies/intetics-2/remote-senior-data-engineer-databricks-germany-237374","i":"IT 外包与软件开发","k":["Databricks"],"d":"Intetics 是一家IT 外包与软件开发领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于现代数据仓库 / 湖仓方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。该岗位支持远程工作。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Mid Data Engineer","c":"Jimdo","l":"Germany (Remote)","v":"Mid","r":"Yes","u":"https://www.arbeitnow.com/jobs/companies/jimdo/mid-data-engineer-germany-293463","i":"建站服务","k":["数据工程（具体栈见职位描述）"],"d":"Jimdo 是一家建站服务领域的公司，正在招聘该数据工程职位。岗位定位为中级岗位，适合 2–4 年数据工程经验、能独立负责模块的工程师，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。该岗位支持远程工作。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Data Engineer (m/w/x)","c":"K-Tronik GmbH","l":"Dresden","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/k-tronik-gmbh/senior-data-engineer-dresden-162970","i":"电子与嵌入式系统","k":["数据工程（具体栈见职位描述）"],"d":"K-Tronik GmbH 是一家电子与嵌入式系统领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Data Platform Engineer (all genders) - Data Lake Platform","c":"MOIA","l":"Berlin / Hamburg","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/moia/senior-data-platform-engineer-all-genders-data-lake-platform-berlin-hamburg-58977","i":"出行科技（大众子公司）","k":["数据平台","数据湖"],"d":"MOIA 是一家出行科技（大众子公司）领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于数据平台与基础设施方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior/Lead Software Data Engineer (Roads Team)","c":"Mapbox","l":"Germany","v":"Lead","r":"","u":"https://www.arbeitnow.com/jobs/companies/mapbox/senior-lead-software-data-engineer-roads-team-mapbox-germany-359607","i":"地图与位置服务","k":["数据工程（具体栈见职位描述）"],"d":"Mapbox 是一家地图与位置服务领域的公司，正在招聘该数据工程职位。岗位定位为负责人岗位，除技术外需带领小型团队或跨团队项目，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"AI & Data Engineer (m/w/d)","c":"PeakSoft GmbH","l":"Wuppertal","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/peaksoft-gmbh/ai-data-engineer-wuppertal-419595","i":"IT 服务","k":["AI"],"d":"PeakSoft GmbH 是一家IT 服务领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于AI 数据基础设施方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Engineer (m/w/d)","c":"Rewire","l":"Heidelberg","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/rewire/data-engineer-heidelberg-51709","i":"能源科技","k":["数据工程（具体栈见职位描述）"],"d":"Rewire 是一家能源科技领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"AI-First Data Engineer (m/f/d)","c":"Sport Alliance GmbH","l":"Germany (Remote)","v":"Mid/Junior","r":"Yes","u":"https://www.arbeitnow.com/jobs/companies/sport-alliance-gmbh/remote-ai-first-data-engineer-364870","i":"体育与健身软件","k":["AI"],"d":"Sport Alliance GmbH 是一家体育与健身软件领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于AI 数据基础设施方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。该岗位支持远程工作。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Staff Engineer, Data & Analytics","c":"Staffbase","l":"Chemnitz","v":"Staff/Principal","r":"","u":"https://www.arbeitnow.com/jobs/companies/staffbase/staff-engineer-data-analytics-chemnitz-sachsen-115754","i":"企业软件（员工沟通）","k":["数据分析"],"d":"Staffbase 是一家企业软件（员工沟通）领域的公司，正在招聘该数据工程职位。岗位定位为资深专家岗位，要求 6–8 年以上经验并具备跨组织技术影响力，方向上属于商业智能与数据分析方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Staff Engineer, Data & Analytics","c":"Staffbase","l":"Dresden","v":"Staff/Principal","r":"","u":"https://www.arbeitnow.com/jobs/companies/staffbase/staff-engineer-data-analytics-dresden-sachsen-18817","i":"企业软件（员工沟通）","k":["数据分析"],"d":"Staffbase 是一家企业软件（员工沟通）领域的公司，正在招聘该数据工程职位。岗位定位为资深专家岗位，要求 6–8 年以上经验并具备跨组织技术影响力，方向上属于商业智能与数据分析方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"(Junior) Data Engineer (m/w/d)","c":"Stahlwerk Annahütte","l":"Ainring","v":"Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/stahlwerk-annahutte-max-aicher-gmbh-co-kg/junior-data-engineer-ainring-376653","i":"钢铁工业","k":["数据工程（具体栈见职位描述）"],"d":"Stahlwerk Annahütte 是一家钢铁工业领域的公司，正在招聘该数据工程职位。岗位定位为初级岗位，适合 0–2 年经验或转岗初期的候选人，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Engineer (m/f/d)","c":"Statista","l":"Hamburg or Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/statista/data-engineer-hamburg-or-berlin-92068","i":"数据统计与市场研究","k":["数据工程（具体栈见职位描述）"],"d":"Statista 是一家数据统计与市场研究领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Engineer","c":"Wayve","l":"Germany","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/wayve/data-engineer-352712","i":"自动驾驶 AI","k":["数据工程（具体栈见职位描述）"],"d":"Wayve 是一家自动驾驶 AI领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data-Plattform Engineer (Fabric / Databricks) (m/w/d)","c":"ailio GmbH","l":"Bielefeld","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/ailio-gmbh/data-plattform-engineer-fabric-databricks-bielefeld-273667","i":"IT 咨询","k":["Databricks","Microsoft Fabric"],"d":"ailio GmbH 是一家IT 咨询领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于现代数据仓库 / 湖仓方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Senior Data Engineer (m/w/d)","c":"celebrate company GmbH","l":"Gilching (Remote)","v":"Senior","r":"Yes","u":"https://www.arbeitnow.com/jobs/companies/celebrate-company-gmbh/remote-senior-data-engineer-gilching-244485","i":"电商（派对用品）","k":["数据工程（具体栈见职位描述）"],"d":"celebrate company GmbH 是一家电商（派对用品）领域的公司，正在招聘该数据工程职位。岗位定位为高级岗位，通常要求 4 年以上数据工程经验，能主导设计与落地，方向上属于通用数据工程方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。该岗位支持远程工作。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Materials Data Engineer (AI for Science, Knowledge Graphs) - Developer (m/f/d)","c":"datin GmbH","l":"Karlsruhe","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/datin-gmbh/agentic-ai-for-science-developer-karlsruhe-81355","i":"材料信息学（AI for Science）","k":["AI","知识图谱"],"d":"datin GmbH 是一家材料信息学（AI for Science）领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于AI 数据基础设施方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"},{"t":"Data Platform Engineer (m/w/d)","c":"hubside die recruitingwerkstatt","l":"Landsberg am Lech","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/hubside-die-recruitingwerkstatt/data-platform-engineer-landsberg-am-lech-125930","i":"IT 招聘","k":["数据平台"],"d":"hubside die recruitingwerkstatt 是一家IT 招聘领域的公司，正在招聘该数据工程职位。岗位定位为初中级岗位，通常要求数据工程基础技能与 1–3 年相关经验，方向上属于数据平台与基础设施方向，日常工作通常围绕数据管道建设、数据模型设计与跨团队数据交付展开。职责细节与任职要求以职位原页为准（见上方链接）。"}];
+
+const CITY_INFO = {
+  "Berlin": "柏林是德国最大的科技中心，创业公司与国际企业密集，英语工作环境多，数据类岗位数量全德第一。生活成本中等，薪资略低于慕尼黑但机会密度最高。",
+  "Munich": "慕尼黑是德国薪资最高的科技城市，大企业（BMW、安联、微软德国等）总部云集，AI/ML 方向强。生活成本全德最高，德语要求普遍比柏林高。",
+  "Hamburg": "汉堡是德国媒体、物流与金融中心，传统企业数字化转型带来稳定的数据岗位需求，生活成本中等偏高。",
+  "Cologne": "科隆是媒体与保险业重镇，IT 咨询与零售科技发达，生活成本适中，柏林之外另一个英语友好度较高的西部城市。",
+  "Dusseldorf": "杜塞尔多夫是广告、电信与金融中心，日本企业集中，数据岗位以传统行业数字化为主，生活成本中等。",
+  "Stuttgart": "斯图加特是德国汽车与制造业心脏（奔驰、博世、保时捷），工业数据与 IoT 方向岗位多，德语要求较高。",
+  "Dresden": "德累斯顿属「萨克森硅谷」，半导体与微电子产业集中（英飞凌、格芯），数据岗位与制造业结合紧密，生活成本低。",
+  "Chemnitz": "开姆尼茨位于萨克森州，制造业与软件结合的区域中心，Staffbase 等软件公司驻扎，生活成本明显低于西部大城市。",
+  "Heidelberg": "海德堡以科研与生物科技闻名，欧洲分子生物学实验室（EMBL）所在地，数据岗位多与科研/医疗结合。",
+  "Karlsruhe": "卡尔斯鲁厄是德国技术大学（KIT）所在地，工业与科研数据岗位较多，IBM 德国研发中心扎根于此。",
+  "Frankfurt": "法兰克福是德国金融中心，银行、交易所与金融科技公司集中，数据岗位以金融数据为主，薪资高。",
+  "Bielefeld": "比勒费尔德是东威斯特法伦工业区的中心，隐形冠军企业密集，IT 数据岗位以中型制造企业为主，生活成本低。",
+  "Wuppertal": "伍珀塔尔属鲁尔区城市群，传统工业城市，IT 岗位以本地中型企业数字化为主，生活成本低。",
+  "Flensburg": "弗伦斯堡位于德国最北端，毗邻丹麦边境，软件与会计自动化企业（AccountOne 等）驻扎，生活成本低。",
+  "Oberkochen": "上科亨是蔡司集团总部所在地，精密光学制造中心，数据岗位与制造业/研发深度结合。",
+  "Ainring": "艾因林位于巴伐利亚东南部近奥地利边境，钢铁制造企业所在，适合偏好安静低成本环境的候选人。",
+  "Landsberg am Lech": "兰茨贝格位于慕尼黑以西，属大慕尼黑都会区，通勤慕尼黑方便，生活成本低于市区。",
+  "Gilching (Remote)": "吉尔兴位于慕尼黑西侧，该岗位以远程为主，兼顾小城镇生活与远程工作灵活性。",
+  "Germany": "岗位位于德国境内（未指定具体城市），部分支持远程或多地办公，详情见职位原页。",
+  "Germany (Remote)": "全德远程岗位，可在德国任意地点工作，对灵活办公偏好者是优选。",
+  "Berlin / Hamburg": "岗位可在柏林或汉堡两地工作，覆盖德国两大北部科技中心。",
+  "Hamburg or Berlin": "岗位可在汉堡或柏林任一城市工作，选择灵活。"
+};
+
+const LEVEL_SALARY = {
+  "Working Student": {min: 12000, max: 20000, note: "工作学生岗按时薪计（约 €13–18/小时），年化参考"},
+  "Junior": {min: 45000, max: 55000, note: "初级数据工程师"},
+  "Mid/Junior": {min: 50000, max: 65000, note: "初中级数据工程师"},
+  "Mid": {min: 60000, max: 75000, note: "中级数据工程师"},
+  "Senior": {min: 75000, max: 90000, note: "高级数据工程师"},
+  "Lead": {min: 85000, max: 100000, note: "负责人级别"},
+  "Staff/Principal": {min: 95000, max: 120000, note: "Staff / Principal 级别"},
+};
 
 (function(){
   const $ = id => document.getElementById(id);
   const search = $('f-search'), citySel = $('f-city'), levelSel = $('f-level'),
-        remoteChk = $('f-remote'), tbody = $('jobs-body'), countEl = $('f-count'),
-        chartEl = $('city-chart');
+        remoteChk = $('f-remote'), tbody = $('jobs-body'), countEl = $('f-count');
   let sortKey = 'l', sortDir = 1;
 
-  // 城市下拉
   const cities = [...new Set(JOBS.map(j => j.l))].sort();
   cities.forEach(c => {
     const o = document.createElement('option');
     o.textContent = c; citySel.appendChild(o);
   });
-
-  function renderChart(list){
-    const counts = {};
-    list.forEach(j => { counts[j.l] = (counts[j.l] || 0) + 1; });
-    const entries = Object.entries(counts).sort((a,b) => b[1]-a[1]).slice(0, 10);
-    const max = entries.length ? entries[0][1] : 1;
-    chartEl.innerHTML = '<h3>📍 城市分布（当前筛选结果 Top 10）</h3>' +
-      entries.map(([c, n]) =>
-        `<div class="bar-row"><span>${c}</span>
-         <div class="bar-bg"><div class="bar" style="width:${(n/max*100).toFixed(1)}%"></div></div>
-         <span class="val">${n}</span></div>`).join('');
-  }
 
   function render(){
     const q = search.value.trim().toLowerCase();
@@ -276,13 +292,15 @@ const JOBS = [{"t":"(Junior) Data Engineer - Data Platform (m/f/d)","c":"1Komma5
 
     countEl.innerHTML = `共 <b>${list.length}</b> / ${JOBS.length} 个职位`;
     tbody.innerHTML = list.map(j =>
-      `<tr><td>${j.t}</td><td>${j.c}</td><td>${j.l}</td>
+      `<tr class="job-row" data-idx="${JOBS.indexOf(j)}">
+       <td>${j.t}</td><td>${j.c}</td><td>${j.l}</td>
        <td><span class="tag gray">${j.v}</span></td>
-       <td>${j.r === 'Yes' ? '<span class="tag green">远程</span>' : '—'}</td>
-       <td><a href="${j.u}" target="_blank" rel="noopener">查看 ↗</a></td></tr>`
-    ).join('') || '<tr><td colspan="6" class="muted">没有匹配的职位，试试放宽筛选条件。</td></tr>';
+       <td>${j.r === 'Yes' ? '<span class="tag green">远程</span>' : '—'}</td></tr>`
+    ).join('') || '<tr><td colspan="5" class="muted">没有匹配的职位，试试放宽筛选条件。</td></tr>';
 
-    renderChart(list);
+    tbody.querySelectorAll('tr.job-row').forEach(tr => {
+      tr.addEventListener('click', () => { location.hash = '#/job/' + tr.dataset.idx; });
+    });
   }
 
   [search, citySel, levelSel, remoteChk].forEach(el => el.addEventListener('input', render));
@@ -297,6 +315,55 @@ const JOBS = [{"t":"(Junior) Data Engineer - Data Platform (m/f/d)","c":"1Komma5
     });
   });
 
+  // ---- 详情视图路由 ----
+  const viewList = $('view-list'), viewDetail = $('view-detail');
+
+  function showDetail(idx){
+    const j = JOBS[idx];
+    if (!j) { location.hash = '#/'; return; }
+    $('d-title').textContent = j.t;
+    const urlA = $('d-url');
+    urlA.href = j.u; urlA.textContent = j.u;
+    $('d-company').textContent = j.c;
+    $('d-industry').textContent = j.i;
+    $('d-location').textContent = j.l;
+    $('d-level').textContent = j.v;
+    $('d-remote').textContent = j.r === 'Yes' ? '支持远程' : '未标注（见原页）';
+    $('d-desc').textContent = j.d;
+    $('d-techs').innerHTML = j.k.map(t => `<span class="tag">${t}</span>`).join('');
+    const cityKey = Object.keys(CITY_INFO).find(k => j.l === k);
+    if (cityKey) {
+      $('d-city-title').textContent = '城市概况 — ' + j.l;
+      $('d-city-info').textContent = CITY_INFO[cityKey];
+      $('d-city-info').classList.remove('muted');
+    } else {
+      $('d-city-title').textContent = '城市概况';
+      $('d-city-info').textContent = '暂无该城市的概况信息。';
+      $('d-city-info').classList.add('muted');
+    }
+    const s = LEVEL_SALARY[j.v] || LEVEL_SALARY['Mid/Junior'];
+    $('d-salary').innerHTML = `${s.note}在德国的市场年薪参考区间约为
+      <b>€${s.min.toLocaleString()} – €${s.max.toLocaleString()}</b>。
+      蓝卡紧缺职业（IT）2026 年门槛为 €45,934，该区间${s.min >= 45934 ? '整体高于' : '部分高于'}蓝卡门槛。
+      具体薪资以公司报价为准。`;
+    viewList.style.display = 'none';
+    viewDetail.style.display = 'block';
+    window.scrollTo(0, 0);
+  }
+
+  function showList(){
+    viewDetail.style.display = 'none';
+    viewList.style.display = 'block';
+  }
+
+  function route(){
+    const m = location.hash.match(/^#\/job\/(\d+)$/);
+    if (m) showDetail(parseInt(m[1], 10));
+    else showList();
+  }
+
+  window.addEventListener('hashchange', route);
+  route();
   render();
 })();
 </script>
