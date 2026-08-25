@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Market Data — 德国数据工程师求职市场数据</title>
+<style>
+  :root{
+    --bg:#ffffff; --fg:#1f2328; --muted:#656d76; --border:#d0d7de;
+    --accent:#0969da; --accent-bg:#ddf4ff; --code-bg:#f6f8fa;
+    --card:#f6f8fa; --green:#1a7f37;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,"PingFang SC","Microsoft YaHei",sans-serif;
+       color:var(--fg);background:var(--bg);line-height:1.6;padding:0 0 60px}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:980px;margin:0 auto;padding:0 20px}
+
+  /* Hero */
+  .hero{background:linear-gradient(135deg,#0b3d91,#0969da);color:#fff;padding:48px 20px 40px;margin-bottom:32px}
+  .hero .wrap{padding:0 20px}
+  .hero h1{font-size:30px;font-weight:700;margin-bottom:8px}
+  .hero p{font-size:16px;opacity:.92;max-width:680px}
+  .hero .meta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+  .badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);
+         padding:4px 12px;border-radius:20px;font-size:13px}
+  .hero a.btn{display:inline-block;margin-top:18px;background:#fff;color:#0b3d91;
+         font-weight:600;padding:9px 18px;border-radius:8px;font-size:14px}
+
+  h2{font-size:22px;margin:38px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+  h3{font-size:17px;margin:22px 0 8px}
+  p{margin:10px 0;color:#333}
+  .muted{color:var(--muted)}
+
+  /* Tree */
+  .tree{background:var(--code-bg);border:1px solid var(--border);border-radius:8px;
+        padding:18px 22px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;
+        font-size:13px;line-height:1.7;overflow-x:auto}
+  .tree .dir{color:var(--accent);font-weight:600}
+  .tree .cmt{color:var(--muted)}
+
+  /* Cards & stats */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px}
+  .card h4{font-size:15px;margin-bottom:6px;color:var(--accent)}
+  .card p{font-size:13px;color:var(--muted);margin:0}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:14px}
+  .stat{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center}
+  .stat .num{font-size:26px;font-weight:700;color:var(--accent)}
+  .stat .lbl{font-size:13px;color:var(--muted);margin-top:4px}
+
+  /* Table */
+  table{width:100%;border-collapse:collapse;margin-top:14px;font-size:14px}
+  th,td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top}
+  th{background:var(--code-bg);font-weight:600}
+  tr:nth-child(even) td{background:#fbfcfd}
+
+  code{background:var(--code-bg);padding:2px 6px;border-radius:4px;font-size:13px;
+       font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+  pre{background:var(--code-bg);border:1px solid var(--border);border-radius:8px;
+      padding:14px 16px;overflow-x:auto;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;
+      font-size:13px;line-height:1.6;margin:12px 0}
+  pre code{background:none;padding:0}
+
+  .note{background:#fff8c5;border:1px solid #d4a72c66;border-radius:8px;padding:14px 16px;margin:16px 0;font-size:14px}
+  .note b{color:#7d4e00}
+  footer{margin-top:46px;padding-top:20px;border-top:1px solid var(--border);
+         text-align:center;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Job Market Data</h1>
+    <p>德国 Python / 数据工程师求职市场结构化数据集：职位列表、薪资水平、签证政策、市场需求与技能要求，含配套分析报告。数据时间范围 2025–2026。</p>
+    <div class="meta">
+      <span class="badge">📊 49 条市场数据</span>
+      <span class="badge">💼 50 个职位</span>
+      <span class="badge">📅 2026-06 采集</span>
+      <span class="badge">🌐 CSV / JSON / Excel</span>
+    </div>
+    <a class="btn" href="https://github.com/Wadesha/job-market-data" target="_blank" rel="noopener">查看 GitHub 仓库 →</a>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <h2>📈 关键数字</h2>
+  <div class="stats">
+    <div class="stat"><div class="num">€60–90k</div><div class="lbl">数据工程师年薪区间</div></div>
+    <div class="stat"><div class="num">130,000</div><div class="lbl">德国 IT 人才缺口（2025–2026）</div></div>
+    <div class="stat"><div class="num">€53,000</div><div class="lbl">2026 全国平均年薪（+4.5%）</div></div>
+    <div class="stat"><div class="num">€45,934</div><div class="lbl">蓝卡紧缺职业（IT）年薪门槛</div></div>
+  </div>
+
+  <h2>📁 目录结构</h2>
+  <div class="tree">
+<span class="dir">job-market-data/</span><br>
+├── <span class="dir">README.md</span>              <span class="cmt"># 数据集说明 + 使用方法</span><br>
+├── <span class="dir">index.html</span>             <span class="cmt"># 本页面（GitHub Pages）</span><br>
+├── <span class="dir">data/</span>                  <span class="cmt"># 结构化数据（核心）</span><br>
+│   ├── <span class="dir">jobs.csv</span>           <span class="cmt"># 职位列表（50 条）</span><br>
+│   ├── <span class="dir">market_data_2026.csv</span>   <span class="cmt"># 市场数据 CSV（49 条）</span><br>
+│   ├── <span class="dir">market_data_2026.json</span>  <span class="cmt"># 市场数据 JSON（层级结构）</span><br>
+│   └── <span class="dir">market_data_2026.xlsx</span>  <span class="cmt"># 市场数据 Excel</span><br>
+└── <span class="dir">reports/</span>               <span class="cmt"># 数据采集与分析报告</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="dir">jobs_analysis.md</span>          <span class="cmt"># 职位市场分析</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="dir">job_report.md</span>            <span class="cmt"># 50 个职位完整清单</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="dir">data_acquisition_2026.md</span> <span class="cmt"># 数据获取报告</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="dir">data_file_assessment.md</span>  <span class="cmt"># 数据文件评估</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;└── <span class="dir">info_fetch_test.md</span>       <span class="cmt"># 采集渠道测试</span>
+  </div>
+
+  <h2>📊 数据集内容</h2>
+
+  <h3>1. 职位列表（jobs.csv）</h3>
+  <p>德国数据工程师职位汇总，含职位名称、公司、地点与链接，覆盖柏林、慕尼黑、斯图加特、杜塞尔多夫及远程岗位。</p>
+
+  <h3>2. 市场数据（market_data_2026，三种格式同源）</h3>
+  <table>
+    <tr><th>类别</th><th>内容概要</th></tr>
+    <tr><td>薪资数据</td><td>全国平均 / 中位数、柏林·慕尼黑·法兰克福·斯图加特城市对比、数据工程师分级薪资（Junior €45–55k / Mid €60–75k / Senior €75–90k）</td></tr>
+    <tr><td>签证政策</td><td>机会卡（Chancenkarte）条件与评分系统、欧盟蓝卡薪资门槛（标准 €50,700 / 紧缺职业 €45,934）</td></tr>
+    <tr><td>市场需求</td><td>IT 人才缺口 13 万、AWS 投资与岗位创造、企业数据增长</td></tr>
+    <tr><td>技能需求</td><td>核心技能（Python / PySpark / SQL / AWS）与工具栈要求</td></tr>
+    <tr><td>机会卡评分</td><td>Chancenkarte 积分制逐项评分标准</td></tr>
+    <tr><td>城市对比 / 行业趋势</td><td>主要城市薪资与生活成本、2025–2026 市场走向</td></tr>
+  </table>
+
+  <h2>🛠 快速上手</h2>
+  <pre><code>import pandas as pd
+import json
+
+jobs = pd.read_csv("data/jobs.csv")           # 职位列表
+market = pd.read_csv("data/market_data_2026.csv")  # 市场数据（表格）
+
+with open("data/market_data_2026.json", encoding="utf-8") as f:
+    data = json.load(f)                       # 市场数据（层级结构）
+
+print(data["salary_data"]["data_engineer"]["salary_range"])
+# {'min': 60000, 'max': 90000, 'currency': 'EUR', ...}</code></pre>
+
+  <ul>
+    <li>表格分析 → CSV</li>
+    <li>程序处理 → JSON（保留层级与中德双语标注）</li>
+    <li>人工浏览 → Excel</li>
+  </ul>
+
+  <h2>📈 报告导读</h2>
+  <div class="grid">
+    <div class="card"><h4>jobs_analysis.md</h4><p>市场行情结论、Python 职位推荐梯度</p></div>
+    <div class="card"><h4>job_report.md</h4><p>50 个职位完整清单与链接</p></div>
+    <div class="card"><h4>data_acquisition_2026.md</h4><p>数据从哪来、怎么采的</p></div>
+    <div class="card"><h4>data_file_assessment.md</h4><p>数据质量与文件评估</p></div>
+  </div>
+
+  <div class="note">
+    <b>⚠️ 时效说明</b>：薪资与签证政策数据随时间变化，引用前请核对数据中的「年份」与「更新时间」字段，并以官方来源（Make it in Germany、Bundesagentur für Arbeit 等）为最终依据。
+  </div>
+
+</div>
+
+<footer>
+  Job Market Data · 德国数据工程师求职市场数据集 · 2025–2026<br>
+  数据采集日期 2026-06-01 · 来源：Web 搜索（中 / 英 / 德）
+</footer>
+
+</body>
+</html>
