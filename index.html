@@ -50,7 +50,37 @@
   .stat .num{font-size:26px;font-weight:700;color:var(--accent)}
   .stat .lbl{font-size:13px;color:var(--muted);margin-top:4px}
 
-  /* Table */
+  /* Job browser */
+  .filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:14px 0}
+  .filters input[type=search],.filters select{
+    border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:14px;
+    background:#fff;color:var(--fg)}
+  .filters input[type=search]{flex:1;min-width:200px}
+  .filters label.chk{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--fg);cursor:pointer}
+  .count{font-size:13px;color:var(--muted);margin:8px 0}
+  .count b{color:var(--accent)}
+
+  .jobs-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:14px}
+  .jobs-table th,.jobs-table td{border:1px solid var(--border);padding:9px 12px;text-align:left;vertical-align:top}
+  .jobs-table th{background:var(--code-bg);font-weight:600;white-space:nowrap;cursor:default}
+  .jobs-table th.sortable{cursor:pointer;user-select:none}
+  .jobs-table th.sortable:hover{color:var(--accent)}
+  .jobs-table tr:nth-child(even) td{background:#fbfcfd}
+  .tag{display:inline-block;background:var(--accent-bg);color:var(--accent);border-radius:12px;
+       padding:1px 9px;font-size:12px;white-space:nowrap}
+  .tag.green{background:#dafbe1;color:var(--green)}
+  .tag.gray{background:var(--code-bg);color:var(--muted)}
+  .jobs-table a{font-size:13px}
+
+  /* City chart */
+  .chart{margin-top:18px}
+  .bar-row{display:grid;grid-template-columns:130px 1fr 44px;gap:10px;align-items:center;
+           margin:7px 0;font-size:13px}
+  .bar-row .bar-bg{background:var(--code-bg);border-radius:5px;height:18px;overflow:hidden}
+  .bar-row .bar{height:100%;background:linear-gradient(90deg,#0969da,#39a0ff);border-radius:5px;
+                min-width:2px;transition:width .4s ease}
+  .bar-row .val{text-align:right;color:var(--muted)}
+
   table{width:100%;border-collapse:collapse;margin-top:14px;font-size:14px}
   th,td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top}
   th{background:var(--code-bg);font-weight:600}
@@ -77,8 +107,8 @@
     <p>德国 Python / 数据工程师求职市场结构化数据集：职位列表、薪资水平、签证政策、市场需求与技能要求，含配套分析报告。数据时间范围 2025–2026。</p>
     <div class="meta">
       <span class="badge">📊 49 条市场数据</span>
-      <span class="badge">💼 50 个职位</span>
-      <span class="badge">📅 2026-06 采集</span>
+      <span class="badge">💼 89 个职位（2026-08 刷新）</span>
+      <span class="badge">📅 职位采集 2026-08-26</span>
       <span class="badge">🌐 CSV / JSON / Excel</span>
     </div>
     <a class="btn" href="https://github.com/Wadesha/job-market-data" target="_blank" rel="noopener">查看 GitHub 仓库 →</a>
@@ -89,11 +119,47 @@
 
   <h2>📈 关键数字</h2>
   <div class="stats">
+    <div class="stat"><div class="num">89</div><div class="lbl">在招数据工程职位（2026-08）</div></div>
     <div class="stat"><div class="num">€60–90k</div><div class="lbl">数据工程师年薪区间</div></div>
     <div class="stat"><div class="num">130,000</div><div class="lbl">德国 IT 人才缺口（2025–2026）</div></div>
-    <div class="stat"><div class="num">€53,000</div><div class="lbl">2026 全国平均年薪（+4.5%）</div></div>
     <div class="stat"><div class="num">€45,934</div><div class="lbl">蓝卡紧缺职业（IT）年薪门槛</div></div>
   </div>
+
+  <h2>💼 职位浏览器</h2>
+  <p class="muted">89 个德国数据工程相关职位，采集自 arbeitnow（2026-08-26）。支持关键词搜索、按城市 / 级别筛选、只看远程，点击表头排序。</p>
+
+  <div class="filters">
+    <input type="search" id="f-search" placeholder="搜索职位 / 公司 / 关键词，如 Python、Databricks、SumUp…">
+    <select id="f-city"><option value="">全部城市</option></select>
+    <select id="f-level">
+      <option value="">全部级别</option>
+      <option>Working Student</option>
+      <option>Junior</option>
+      <option>Mid/Junior</option>
+      <option>Mid</option>
+      <option>Senior</option>
+      <option>Lead</option>
+      <option>Staff/Principal</option>
+    </select>
+    <label class="chk"><input type="checkbox" id="f-remote"> 只看远程</label>
+  </div>
+  <div class="count" id="f-count"></div>
+
+  <div class="chart" id="city-chart"></div>
+
+  <table class="jobs-table" id="jobs-table">
+    <thead>
+      <tr>
+        <th class="sortable" data-key="t">职位名称 ⇅</th>
+        <th class="sortable" data-key="c">公司 ⇅</th>
+        <th class="sortable" data-key="l">地点 ⇅</th>
+        <th class="sortable" data-key="v">级别 ⇅</th>
+        <th>远程</th>
+        <th>链接</th>
+      </tr>
+    </thead>
+    <tbody id="jobs-body"></tbody>
+  </table>
 
   <h2>📁 目录结构</h2>
   <div class="tree">
@@ -101,13 +167,13 @@
 ├── <span class="dir">README.md</span>              <span class="cmt"># 数据集说明 + 使用方法</span><br>
 ├── <span class="dir">index.html</span>             <span class="cmt"># 本页面（GitHub Pages）</span><br>
 ├── <span class="dir">data/</span>                  <span class="cmt"># 结构化数据（核心）</span><br>
-│   ├── <span class="dir">jobs.csv</span>           <span class="cmt"># 职位列表（50 条）</span><br>
+│   ├── <span class="dir">jobs.csv</span>           <span class="cmt"># 职位列表（89 条，2026-08 刷新）</span><br>
 │   ├── <span class="dir">market_data_2026.csv</span>   <span class="cmt"># 市场数据 CSV（49 条）</span><br>
 │   ├── <span class="dir">market_data_2026.json</span>  <span class="cmt"># 市场数据 JSON（层级结构）</span><br>
 │   └── <span class="dir">market_data_2026.xlsx</span>  <span class="cmt"># 市场数据 Excel</span><br>
 └── <span class="dir">reports/</span>               <span class="cmt"># 数据采集与分析报告</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;├── <span class="dir">jobs_analysis.md</span>          <span class="cmt"># 职位市场分析</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="dir">job_report.md</span>            <span class="cmt"># 50 个职位完整清单</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="dir">job_report.md</span>            <span class="cmt"># 89 个职位完整清单</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;├── <span class="dir">data_acquisition_2026.md</span> <span class="cmt"># 数据获取报告</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;├── <span class="dir">data_file_assessment.md</span>  <span class="cmt"># 数据文件评估</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;└── <span class="dir">info_fetch_test.md</span>       <span class="cmt"># 采集渠道测试</span>
@@ -116,7 +182,7 @@
   <h2>📊 数据集内容</h2>
 
   <h3>1. 职位列表（jobs.csv）</h3>
-  <p>德国数据工程师职位汇总，含职位名称、公司、地点与链接，覆盖柏林、慕尼黑、斯图加特、杜塞尔多夫及远程岗位。</p>
+  <p>德国数据工程师职位汇总，含职位名称、公司、地点、级别、远程标记与链接，覆盖柏林、慕尼黑、汉堡、科隆、斯图加特、杜塞尔多夫及远程岗位。</p>
 
   <h3>2. 市场数据（market_data_2026，三种格式同源）</h3>
   <table>
@@ -151,21 +217,89 @@ print(data["salary_data"]["data_engineer"]["salary_range"])
   <h2>📈 报告导读</h2>
   <div class="grid">
     <div class="card"><h4>jobs_analysis.md</h4><p>市场行情结论、Python 职位推荐梯度</p></div>
-    <div class="card"><h4>job_report.md</h4><p>50 个职位完整清单与链接</p></div>
+    <div class="card"><h4>job_report.md</h4><p>89 个职位完整清单与链接</p></div>
     <div class="card"><h4>data_acquisition_2026.md</h4><p>数据从哪来、怎么采的</p></div>
     <div class="card"><h4>data_file_assessment.md</h4><p>数据质量与文件评估</p></div>
   </div>
 
   <div class="note">
-    <b>⚠️ 时效说明</b>：薪资与签证政策数据随时间变化，引用前请核对数据中的「年份」与「更新时间」字段，并以官方来源（Make it in Germany、Bundesagentur für Arbeit 等）为最终依据。
+    <b>⚠️ 时效说明</b>：薪资与签证政策数据随时间变化，引用前请核对数据中的「年份」与「更新时间」字段，并以官方来源（Make it in Germany、Bundesagentur für Arbeit 等）为最终依据。职位列表为某一时点快照，链接可能过期，建议点击前先在 arbeitnow / LinkedIn 搜索最新状态。
   </div>
 
 </div>
 
 <footer>
   Job Market Data · 德国数据工程师求职市场数据集 · 2025–2026<br>
-  数据采集日期 2026-06-01 · 来源：Web 搜索（中 / 英 / 德）
+  市场数据采集 2026-06-01 · 职位数据刷新 2026-08-26 · 来源：Web 搜索（中 / 英 / 德）+ arbeitnow
 </footer>
+
+<script>
+const JOBS = [{"t":"(Junior) Data Engineer - Data Platform (m/f/d)","c":"1Komma5","l":"Berlin","v":"Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/1komma50/junior-data-engineer-data-platform-berlin-266979"},{"t":"Data Engineer","c":"All Your BI","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/all-your-bi/data-engineer-berlin-468631"},{"t":"Senior Data Engineer","c":"All Your BI","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/all-your-bi/senior-data-engineer-berlin-362738"},{"t":"Data Engineer","c":"Almedia","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/almedia/data-engineer-berlin-389443"},{"t":"Data Engineer (m/w/d)","c":"Angeheuert GmbH","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/angeheuert-gmbh-personalberatung/data-engineer-berlin-32772"},{"t":"Data Platform Engineer (m/w/d)","c":"Angeheuert GmbH","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/angeheuert-gmbh/data-platform-engineer-berlin-273541"},{"t":"Senior Data Engineer (m/w/d)","c":"Angeheuert GmbH","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/angeheuert-gmbh/senior-data-engineer-berlin-296119"},{"t":"Data Engineer","c":"Atolls","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/atolls/data-engineer-berlin-466297"},{"t":"Senior Data & Python Software Engineer","c":"Ceartas","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/ceartas/senior-data-python-software-engineer-berlin-87350"},{"t":"Senior Data Platform Engineer","c":"Choco","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/choco/senior-data-platform-engineer-berlin-111883"},{"t":"Data Engineer (f/m/d)","c":"Climate","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-316909"},{"t":"Senior Data Engineer (Databricks) (m/w/d)","c":"Collaboration Betters The World GmbH","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/collaboration-betters-the-world-gmbh/senior-data-engineer-databricks-berlin-352892"},{"t":"Software Engineer, Data","c":"Engelhart","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/engelhart/software-engineer-data-berlin-291596"},{"t":"Senior Data Engineer (f/m/d) metrify","c":"Enpal","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/enpal/senior-data-engineer-metrify-berlin-61854"},{"t":"Staff Data Engineer (f/m/d) metrify","c":"Enpal","l":"Berlin","v":"Staff/Principal","r":"","u":"https://www.arbeitnow.com/jobs/companies/enpal/staff-data-engineer-metrify-berlin-347291"},{"t":"Data Platform Engineer (m/f/d)","c":"Flix","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/flix/data-platform-engineer-berlin-59805"},{"t":"Senior Data Engineer","c":"GLS/NXT","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/glsnxt/senior-data-engineer-berlin-391080"},{"t":"(Senior) Data Engineer (m/w/d)","c":"Galvany","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/galvany/senior-data-engineer-berlin-262882"},{"t":"Data Engineer (all genders)","c":"Gropyus","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/gropyus/data-engineer-all-genders-berlin-berlin-461780"},{"t":"Senior Data Engineer (f/m/d)","c":"Gropyus","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/gropyus/senior-data-engineer-berlin-347344"},{"t":"Lead Engineer (m/f/d) Data Infrastructure","c":"MOTOR Ai","l":"Berlin","v":"Lead","r":"","u":"https://www.arbeitnow.com/jobs/companies/motor-ai/lead-engineer-data-infrastructure-berlin-249418"},{"t":"Data Engineer (f/m/d)","c":"Moonfare","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/moonfare/data-engineer-berlin-38343"},{"t":"Data Scientist / Data Engineer","c":"Nucs AI","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/nucs-ai/data-scientist-data-engineer-berlin-12132"},{"t":"Data Engineer (m/w/d) – Fokus Messdatenmanagement & Ownership","c":"Octopus Energy","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/octopus-energy-group/data-engineer-fokus-messdatenmanagement-ownership-berlin-de-197367"},{"t":"Data Engineer","c":"Pergolux","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/pergolux/data-engineer-berlin-36164"},{"t":"Senior Data Engineer, Constellation Services","c":"Planet Labs","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/planetlabs/senior-data-engineer-constellation-services-berlin-275061"},{"t":"Working Student Data Engineer (m/f/d)","c":"Raisin","l":"Berlin","v":"Working Student","r":"","u":"https://www.arbeitnow.com/jobs/companies/raisin/working-student-data-engineer-berlin-berlin-303757"},{"t":"Senior Data Platform Engineer","c":"Smartly","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/smartly/senior-data-platform-engineer-berlin-172988"},{"t":"Software Engineer, Data Infrastructure & Acquisition - Berlin, Germany","c":"Speechify","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/speechify/software-engineer-data-infrastructure-acquisition-berlin-germany-374168"},{"t":"Staff Engineer, Data & Analytics","c":"Staffbase","l":"Berlin","v":"Staff/Principal","r":"","u":"https://www.arbeitnow.com/jobs/companies/staffbase/staff-engineer-data-analytics-berlin-brandenburg-181077"},{"t":"Data Engineer","c":"SumUp","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/sumup/data-engineer-berlin-319528"},{"t":"Senior Data Scientist/ML Engineer - Financial Crime","c":"SumUp","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/sumup/senior-data-scientist-ml-engineer-financial-crime-berlin-185839"},{"t":"Senior Machine Learning Engineer I","c":"SumUp","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/sumup/senior-machine-learning-engineer-i-berlin-296351"},{"t":"Data Engineer","c":"Superhuman","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/superhuman/data-engineer-berlin-89243"},{"t":"Data Engineer","c":"Superhuman Platform Inc","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/superhuman/data-engineer-berlin-279973"},{"t":"Data Engineer / Data Scientist (m/f/x)","c":"Targomo Casafari GmbH","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/targomo-casafari-gmbh/data-engineer-data-scientist-berlin-22129"},{"t":"(Senior) Data Engineer - Data Platform (m/f/d)","c":"Unzer","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/unzer/senior-data-engineer-data-platform-berlin-154140"},{"t":"Analytics Engineer, Payments Intelligence","c":"Vinteden","l":"Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/vinteden/analytics-engineer-payments-intelligence-berlin-224168"},{"t":"Staff Engineer - Data Platform (m|w|d)","c":"idealo internet GmbH","l":"Berlin","v":"Staff/Principal","r":"","u":"https://www.arbeitnow.com/jobs/companies/idealo-internet-gmbh/staff-engineer-data-platform-mwd-berlin-380934"},{"t":"Senior Data Engineer","c":"trawa","l":"Berlin","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/trawa/senior-data-engineer-berlin-179460"},{"t":"Principal Data Engineer (m/w/d)","c":"Alexander Thamm GmbH","l":"Munich","v":"Staff/Principal","r":"","u":"https://www.arbeitnow.com/jobs/companies/alexander-thamm-gmbh/principal-data-engineer-munchen-77292"},{"t":"Senior Data Engineer (m/w/d)","c":"Alexander Thamm GmbH","l":"Munich","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/alexander-thamm-gmbh/senior-data-engineer-munchen-361544"},{"t":"Senior Data Scientist (m/w/d) - Chemical Engineering & Verfahrenstechnik","c":"Alexander Thamm GmbH","l":"Munich","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/alexander-thamm-gmbh/senior-data-scientist-chemical-engineering-verfahrenstechnik-hybrid-munchen-53405"},{"t":"Senior Data Visualization Engineer - Microsoft Fabric (m/w/d)","c":"Alexander Thamm GmbH","l":"Munich","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/alexander-thamm-gmbh/senior-data-visualization-engineer-microsoft-fabric-hybrid-munchen-273332"},{"t":"Data Engineer","c":"Atolls","l":"Munich","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/atolls/data-engineer-munich-309780"},{"t":"Senior Software Engineer – Data Ingestion & Extraction (m/f/d)","c":"Certivity","l":"Munich","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/certivity/senior-software-engineer-data-ingestion-extraction-munchen-hq-218511"},{"t":"Senior Data Engineer (m/w/d) – Snowflake","c":"Jobrad Loop","l":"Munich","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/jobrad-loop/senior-data-engineer-snowflake-munchen-10090"},{"t":"DATA ENGINEER (f/m/d)","c":"Omnisent","l":"Munich","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/omnisent/data-engineer-munich-208534"},{"t":"Data Platform Engineer Working Student (m/w/d)","c":"Trusteq GmbH","l":"Munich","v":"Working Student","r":"","u":"https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-platform-engineer-working-student-munchen-230477"},{"t":"Data Engineer (m/w/d) - Azure Cloud & MS Fabric","c":"Doehle","l":"Hamburg","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/doehle/data-engineer-azure-cloud-ms-fabric-hamburg-82581"},{"t":"Software Engineer, Data Infrastructure & Acquisition - Hamburg, Germany","c":"Speechify","l":"Hamburg","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/speechify/software-engineer-data-infrastructure-acquisition-hamburg-germany-252312"},{"t":"Senior Data Engineer (f/m/d)","c":"ZEAL Network","l":"Hamburg","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/zeal-network/senior-data-engineer-hamburg-360638"},{"t":"Senior Data Engineer (f/m/d)","c":"adjoe","l":"Hamburg","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/adjoe/senior-data-engineer-hamburg-78506"},{"t":"Data Analyst (all genders)","c":"muvn","l":"Hamburg","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/muvn/data-analyst-all-genders-hamburg-222708"},{"t":"Senior Software Engineer, Data","c":"Circonomit","l":"Cologne","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/circonomit/senior-software-engineer-data-cologne-27546"},{"t":"Software Engineer - Data (All Genders)","c":"PREMATCH Sports GmbH","l":"Cologne","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/prematch-sports-gmbh/software-engineer-data-all-genders-koln-358585"},{"t":"Software Engineer, Data Infrastructure & Acquisition - Cologne, Germany","c":"Speechify","l":"Cologne","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/speechify/software-engineer-data-infrastructure-acquisition-cologne-germany-114349"},{"t":"Principal Data Engineer (m/f/d)","c":"Thoughtworks","l":"Cologne","v":"Staff/Principal","r":"","u":"https://www.arbeitnow.com/jobs/companies/thoughtworks/principal-data-engineer-cologne-440133"},{"t":"Data Engineer Working Student (m/w/d)","c":"Trusteq GmbH","l":"Cologne","v":"Working Student","r":"","u":"https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-engineer-working-student-koln-358872"},{"t":"Data Engineer (m/f/d)","c":"DISH Digital Solutions GmbH","l":"Dusseldorf","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/dishdigital/data-engineer-dusseldorf-363424"},{"t":"Senior Data Engineer (m/f/d)","c":"DISH Digital Solutions GmbH","l":"Dusseldorf","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/dishdigital/senior-data-engineer-dusseldorf-259265"},{"t":"Data Engineer - AI Pipelines & DataOps","c":"Intersnack IT KG","l":"Dusseldorf","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/intersnack-it-kg/data-engineer-ai-pipelines-dataops-dusseldorf-452480"},{"t":"Data Engineer - AFRICOM","c":"Agile Defense","l":"Stuttgart","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/agile-defense/data-engineer-africom-stuttgart-germany-50591"},{"t":"Data Engineer (Professional) (Databricks) (m/w/d)","c":"Collaboration Betters The World GmbH","l":"Stuttgart","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/collaboration-betters-the-world-gmbh/data-engineer-professional-databricks-stuttgart-296815"},{"t":"Junior Data Engineer (Databricks) (m/w/d)","c":"Collaboration Betters The World GmbH","l":"Stuttgart","v":"Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/collaboration-betters-the-world-gmbh/junior-data-engineer-databricks-stuttgart-267806"},{"t":"Senior Data Engineer (Databricks) (m/w/d)","c":"Collaboration Betters The World GmbH","l":"Stuttgart","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/collaboration-betters-the-world-gmbh/senior-data-engineer-databricks-stuttgart-156226"},{"t":"Data Analyst / Analytics Engineer (m/w/d)","c":"AccountOne GmbH","l":"Flensburg","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/accountone-gmbh/data-analyst-analytics-engineer-flensburg-194471"},{"t":"AI & Data Science Engineer (m/w/d)","c":"CIGUS GmbH","l":"Oberkochen","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/cigus-gmbh/ai-data-science-engineer-oberkochen-124893"},{"t":"Senior Cloud Data Infrastructure Engineer","c":"ClickHouse","l":"Germany (Remote)","v":"Senior","r":"Yes","u":"https://www.arbeitnow.com/jobs/companies/clickhouse/senior-cloud-data-infrastructure-engineer-34130"},{"t":"Senior Software Engineer - Python and Data Ecosystem","c":"ClickHouse","l":"Germany (Remote)","v":"Senior","r":"Yes","u":"https://www.arbeitnow.com/jobs/companies/clickhouse/senior-software-engineer-python-and-data-ecosystem-496014"},{"t":"Data Engineering Leader","c":"Cognite","l":"Germany","v":"Lead","r":"","u":"https://www.arbeitnow.com/jobs/companies/cognite/data-engineering-leader-319108"},{"t":"Principal Software Engineer - Data Lakes","c":"Fivetran","l":"Germany (Remote)","v":"Staff/Principal","r":"Yes","u":"https://www.arbeitnow.com/jobs/companies/fivetran/remote-principal-software-engineer-data-lakes-398416"},{"t":"Senior Data Engineer - Databricks","c":"Intetics","l":"Germany (Remote)","v":"Senior","r":"Yes","u":"https://www.arbeitnow.com/jobs/companies/intetics-2/remote-senior-data-engineer-databricks-germany-237374"},{"t":"Mid Data Engineer","c":"Jimdo","l":"Germany (Remote)","v":"Mid","r":"Yes","u":"https://www.arbeitnow.com/jobs/companies/jimdo/mid-data-engineer-germany-293463"},{"t":"Senior Data Engineer (m/w/x)","c":"K-Tronik GmbH","l":"Dresden","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/k-tronik-gmbh/senior-data-engineer-dresden-162970"},{"t":"Senior Data Platform Engineer (all genders) - Data Lake Platform","c":"MOIA","l":"Berlin / Hamburg","v":"Senior","r":"","u":"https://www.arbeitnow.com/jobs/companies/moia/senior-data-platform-engineer-all-genders-data-lake-platform-berlin-hamburg-58977"},{"t":"Senior/Lead Software Data Engineer (Roads Team)","c":"Mapbox","l":"Germany","v":"Lead","r":"","u":"https://www.arbeitnow.com/jobs/companies/mapbox/senior-lead-software-data-engineer-roads-team-mapbox-germany-359607"},{"t":"AI & Data Engineer (m/w/d)","c":"PeakSoft GmbH","l":"Wuppertal","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/peaksoft-gmbh/ai-data-engineer-wuppertal-419595"},{"t":"Data Engineer (m/w/d)","c":"Rewire","l":"Heidelberg","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/rewire/data-engineer-heidelberg-51709"},{"t":"AI-First Data Engineer (m/f/d)","c":"Sport Alliance GmbH","l":"Germany (Remote)","v":"Mid/Junior","r":"Yes","u":"https://www.arbeitnow.com/jobs/companies/sport-alliance-gmbh/remote-ai-first-data-engineer-364870"},{"t":"Staff Engineer, Data & Analytics","c":"Staffbase","l":"Chemnitz","v":"Staff/Principal","r":"","u":"https://www.arbeitnow.com/jobs/companies/staffbase/staff-engineer-data-analytics-chemnitz-sachsen-115754"},{"t":"Staff Engineer, Data & Analytics","c":"Staffbase","l":"Dresden","v":"Staff/Principal","r":"","u":"https://www.arbeitnow.com/jobs/companies/staffbase/staff-engineer-data-analytics-dresden-sachsen-18817"},{"t":"(Junior) Data Engineer (m/w/d)","c":"Stahlwerk Annahütte","l":"Ainring","v":"Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/stahlwerk-annahutte-max-aicher-gmbh-co-kg/junior-data-engineer-ainring-376653"},{"t":"Data Engineer (m/f/d)","c":"Statista","l":"Hamburg or Berlin","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/statista/data-engineer-hamburg-or-berlin-92068"},{"t":"Data Engineer","c":"Wayve","l":"Germany","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/wayve/data-engineer-352712"},{"t":"Data-Plattform Engineer (Fabric / Databricks) (m/w/d)","c":"ailio GmbH","l":"Bielefeld","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/ailio-gmbh/data-plattform-engineer-fabric-databricks-bielefeld-273667"},{"t":"Senior Data Engineer (m/w/d)","c":"celebrate company GmbH","l":"Gilching (Remote)","v":"Senior","r":"Yes","u":"https://www.arbeitnow.com/jobs/companies/celebrate-company-gmbh/remote-senior-data-engineer-gilching-244485"},{"t":"Materials Data Engineer (AI for Science, Knowledge Graphs) - Developer (m/f/d)","c":"datin GmbH","l":"Karlsruhe","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/datin-gmbh/agentic-ai-for-science-developer-karlsruhe-81355"},{"t":"Data Platform Engineer (m/w/d)","c":"hubside die recruitingwerkstatt","l":"Landsberg am Lech","v":"Mid/Junior","r":"","u":"https://www.arbeitnow.com/jobs/companies/hubside-die-recruitingwerkstatt/data-platform-engineer-landsberg-am-lech-125930"}];
+
+(function(){
+  const $ = id => document.getElementById(id);
+  const search = $('f-search'), citySel = $('f-city'), levelSel = $('f-level'),
+        remoteChk = $('f-remote'), tbody = $('jobs-body'), countEl = $('f-count'),
+        chartEl = $('city-chart');
+  let sortKey = 'l', sortDir = 1;
+
+  // 城市下拉
+  const cities = [...new Set(JOBS.map(j => j.l))].sort();
+  cities.forEach(c => {
+    const o = document.createElement('option');
+    o.textContent = c; citySel.appendChild(o);
+  });
+
+  function renderChart(list){
+    const counts = {};
+    list.forEach(j => { counts[j.l] = (counts[j.l] || 0) + 1; });
+    const entries = Object.entries(counts).sort((a,b) => b[1]-a[1]).slice(0, 10);
+    const max = entries.length ? entries[0][1] : 1;
+    chartEl.innerHTML = '<h3>📍 城市分布（当前筛选结果 Top 10）</h3>' +
+      entries.map(([c, n]) =>
+        `<div class="bar-row"><span>${c}</span>
+         <div class="bar-bg"><div class="bar" style="width:${(n/max*100).toFixed(1)}%"></div></div>
+         <span class="val">${n}</span></div>`).join('');
+  }
+
+  function render(){
+    const q = search.value.trim().toLowerCase();
+    const list = JOBS.filter(j =>
+      (!q || (j.t + ' ' + j.c + ' ' + j.l).toLowerCase().includes(q)) &&
+      (!citySel.value || j.l === citySel.value) &&
+      (!levelSel.value || j.v === levelSel.value) &&
+      (!remoteChk.checked || j.r === 'Yes')
+    ).sort((a, b) => {
+      const x = a[sortKey] || '', y = b[sortKey] || '';
+      return x.localeCompare(y) * sortDir;
+    });
+
+    countEl.innerHTML = `共 <b>${list.length}</b> / ${JOBS.length} 个职位`;
+    tbody.innerHTML = list.map(j =>
+      `<tr><td>${j.t}</td><td>${j.c}</td><td>${j.l}</td>
+       <td><span class="tag gray">${j.v}</span></td>
+       <td>${j.r === 'Yes' ? '<span class="tag green">远程</span>' : '—'}</td>
+       <td><a href="${j.u}" target="_blank" rel="noopener">查看 ↗</a></td></tr>`
+    ).join('') || '<tr><td colspan="6" class="muted">没有匹配的职位，试试放宽筛选条件。</td></tr>';
+
+    renderChart(list);
+  }
+
+  [search, citySel, levelSel, remoteChk].forEach(el => el.addEventListener('input', render));
+
+  document.querySelectorAll('th.sortable').forEach(th => {
+    th.addEventListener('click', () => {
+      const k = th.dataset.key;
+      if (sortKey === k) sortDir *= -1; else { sortKey = k; sortDir = 1; }
+      document.querySelectorAll('th.sortable').forEach(t => t.textContent = t.textContent.replace(/ [↑↓⇅]/, ' ⇅'));
+      th.textContent = th.textContent.replace(' ⇅', sortDir === 1 ? ' ↑' : ' ↓');
+      render();
+    });
+  });
+
+  render();
+})();
+</script>
 
 </body>
 </html>

@@ -16,14 +16,14 @@ job-market-data/
 ├── .nojekyll
 │
 ├── data/                            # 结构化数据（核心）
-│   ├── jobs.csv                     # 德国数据工程师职位列表（50 条，含签证支持标记）
+│   ├── jobs.csv                     # 德国数据工程师职位列表（89 条，2026-08 刷新）
 │   ├── market_data_2026.csv         # 2026 市场数据（CSV，49 条记录）
 │   ├── market_data_2026.json        # 2026 市场数据（JSON，结构化层级）
 │   └── market_data_2026.xlsx        # 2026 市场数据（Excel，综合查看）
 │
 └── reports/                         # 数据采集与分析报告
     ├── jobs_analysis.md             # Python 数据工程师职位市场分析
-    ├── job_report.md                # 50 个职位机会完整清单（含链接）
+    ├── job_report.md                # 89 个职位机会完整清单（含链接）
     ├── data_acquisition_2026.md     # 2026 数据获取报告（来源与方法）
     ├── data_file_assessment.md      # 数据文件评估报告
     └── info_fetch_test.md           # 信息获取渠道测试报告
@@ -35,13 +35,15 @@ job-market-data/
 
 ### 1. `data/jobs.csv` — 职位列表
 
-德国数据工程师职位汇总，采集自 arbeitnow.com 等渠道。
+德国数据工程师职位汇总，采集自 arbeitnow.com（2026-08-26 刷新，89 条）。
 
 | 字段 | 说明 |
 |------|------|
 | Job Title | 职位名称 |
 | Company | 公司 |
 | Location | 工作地点（柏林 / 慕尼黑 / 远程等） |
+| Level | 级别（Junior / Mid / Senior / Lead / Staff-Principal 等） |
+| Remote | 是否远程（Yes / 空） |
 | Link | 职位链接 |
 
 ### 2. `data/market_data_2026.*` — 市场数据（同一数据的三种格式）
@@ -96,7 +98,7 @@ print(market_json["salary_data"]["data_engineer"]["salary_range"])
 | 想了解 | 读这份 |
 |--------|--------|
 | 市场行情结论、Python 职位推荐梯度 | `reports/jobs_analysis.md` |
-| 50 个职位完整清单与链接 | `reports/job_report.md` |
+| 89 个职位完整清单与链接 | `reports/job_report.md` |
 | 数据从哪来、怎么采的 | `reports/data_acquisition_2026.md` |
 | 数据质量与文件评估 | `reports/data_file_assessment.md` |
 | 采集渠道有效性验证 | `reports/info_fetch_test.md` |
